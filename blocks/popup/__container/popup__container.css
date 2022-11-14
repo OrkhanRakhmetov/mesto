@@ -7,3 +7,11 @@
     justify-content: center;
     background-color: #fff;
 }
+
+
+@media screen and (max-width:480px) {
+    .popup__container {
+        width: 282px;
+        height: 322px;
+    }
+}
