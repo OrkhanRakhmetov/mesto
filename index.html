@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="./pages/index.css">
+  <title>Mesto</title>
+</head>
+
+<body class="page">
+
+  <header class="header">
+    <img src="./../../../images/svg/logo.svg" alt="Логотип страници" class="header__logo">
+    <div class="header__line"></div>
+  </header>
+
+  <main class="content">
+
+    <section class="profile">
+      <div class="profile__container">
+        <img src="./../../../images/profile-image.jpg" alt="Аватарка профиля" class="profile__avatar">
+        <div class="profile__info">
+          <div class="profile__info-name">
+            <h1 class="profile__title">Жак-Ив Кусто</h1>
+            <button type="button" class="profile__edit-button"></button>
+          </div>
+          <p class="profile__subtitle">Исследователь океана</p>
+        </div>
+      </div>
+      <button type="button" class="profile__add-button"></button>
+    </section>
+
+    <section class="elements">
+      <div class="element">
+        <img src="./images/karachaevsk.jpg" alt="" class="element__img">
+        <div class="element__desc">
+          <h2 class="element__title">Карачаевск</h2>
+          <button class="element__heart"></button>
+        </div>
+      </div>
+      <div class="element">
+        <img src="./images/Elbrus-MaskGroup.jpg" alt="" class="element__img">
+        <div class="element__desc">
+          <h2 class="element__title">Гора Эльбрус</h2>
+          <button class="element__heart"></button>
+        </div>
+      </div>
+      <div class="element">
+        <img src="./images/domba-MaskGroup.jpg" alt="" class="element__img">
+        <div class="element__desc">
+          <h2 class="element__title">Домбай</h2>
+          <button class="element__heart"></button>
+        </div>
+      </div>
+      <div class="element">
+        <img src="./images/Elbrus-MaskGroup.jpg" alt="" class="element__img">
+        <div class="element__desc">
+          <h2 class="element__title">Гора Эльбрус</h2>
+          <button class="element__heart"></button>
+        </div>
+      </div>
+      <div class="element">
+        <img src="./images/domba-MaskGroup.jpg" alt="" class="element__img">
+        <div class="element__desc">
+          <h2 class="element__title">Домбай</h2>
+          <button class="element__heart"></button>
+        </div>
+      </div>
+      <div class="element">
+        <img src="./images/karachaevsk.jpg" alt="" class="element__img">
+        <div class="element__desc">
+          <h2 class="element__title">Карачаево-Черкесия</h2>
+          <button class="element__heart"></button>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <footer class="footer">
+    <p class="footer__text">&copy; 2020 Mesto Russia</p>
+  </footer>
+
+  <section class="popup">
+    <div class="popup__container">
+      <h2 class="popup__title">Редактировать профиль</h2>
+      <form class="popup__inputs">
+        <input type="text" class="popup__input popup__input_name-info" placeholder="Имя">
+        <input type="text" class="popup__input popup__input_job-info" placeholder="Род деятельности">
+        <input type="submit" class="popup__button" value="Сохранить">
+      </form>
+      <button type="button" class="popup__button-close"></button>
+    </div>
+  </section>
+
+  <script src="./js/index.js"></script>
+</body>
+
+</html>
