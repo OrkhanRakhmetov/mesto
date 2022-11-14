@@ -9,6 +9,7 @@
     color: #000000;
     outline: none;
 }
+
 @media screen and (max-width:480px) {
     .popup__input {
         width: 238px;
