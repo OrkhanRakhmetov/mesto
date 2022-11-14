@@ -4,7 +4,7 @@
     top: -40px;
     width: 32px;
     height: 32px;
-    background: url(./../../../../images/svg/Close-Icon.svg);
+    background: url(./../../../images/svg/Close-Icon.svg);
     background-repeat: no-repeat;
     background-position: center;
     cursor: pointer;
