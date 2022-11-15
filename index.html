@@ -13,7 +13,6 @@
 
   <header class="header">
     <img src="./images/svg/logo.svg" alt="Логотип страници" class="header__logo">
-    <div class="header__line"></div>
   </header>
 
   <main class="content">
@@ -33,48 +32,51 @@
     </section>
 
     <section class="elements">
-      <div class="element">
-        <img src="./images/karachaevsk.jpg" alt="" class="element__img">
-        <div class="element__desc">
-          <h2 class="element__title">Карачаевск</h2>
-          <button class="element__heart"></button>
-        </div>
-      </div>
-      <div class="element">
-        <img src="./images/Elbrus-MaskGroup.jpg" alt="" class="element__img">
-        <div class="element__desc">
-          <h2 class="element__title">Гора Эльбрус</h2>
-          <button class="element__heart"></button>
-        </div>
-      </div>
-      <div class="element">
-        <img src="./images/domba-MaskGroup.jpg" alt="" class="element__img">
-        <div class="element__desc">
-          <h2 class="element__title">Домбай</h2>
-          <button class="element__heart"></button>
-        </div>
-      </div>
-      <div class="element">
-        <img src="./images/Elbrus-MaskGroup.jpg" alt="" class="element__img">
-        <div class="element__desc">
-          <h2 class="element__title">Гора Эльбрус</h2>
-          <button class="element__heart"></button>
-        </div>
-      </div>
-      <div class="element">
-        <img src="./images/domba-MaskGroup.jpg" alt="" class="element__img">
-        <div class="element__desc">
-          <h2 class="element__title">Домбай</h2>
-          <button class="element__heart"></button>
-        </div>
-      </div>
-      <div class="element">
-        <img src="./images/karachaevsk.jpg" alt="" class="element__img">
-        <div class="element__desc">
-          <h2 class="element__title">Карачаево-Черкесия</h2>
-          <button class="element__heart"></button>
-        </div>
-      </div>
+      <ul class="elements__list">
+        <li class="element">
+          <img src="./images/karachaevsk.jpg" alt="Древняя крепость в горах." class="element__img">
+          <div class="element__desc">
+            <h2 class="element__title">Карачаевск</h2>
+            <button type="button" class="element__heart"></button>
+          </div>
+        </li>
+        <li class="element">
+          <img src="./images/Elbrus-MaskGroup.jpg" alt="Гора Эльбрус в далеке, на закате." class="element__img">
+          <div class="element__desc">
+            <h2 class="element__title">Гора Эльбрус</h2>
+            <button type="button" class="element__heart"></button>
+          </div>
+        </li>
+        <li class="element">
+          <img src="./images/domba-MaskGroup.jpg" alt="Заснеженная вершина Домбая." class="element__img">
+          <div class="element__desc">
+            <h2 class="element__title">Домбай</h2>
+            <button type="button" class="element__heart"></button>
+          </div>
+        </li>
+        <li class="element">
+          <img src="./images/Elbrus-MaskGroup.jpg" alt="Гора Эльбрус в далеке, на закате." class="element__img">
+          <div class="element__desc">
+            <h2 class="element__title">Гора Эльбрус</h2>
+            <button type="button" class="element__heart"></button>
+          </div>
+        </li>
+        <li class="element">
+          <img src="./images/domba-MaskGroup.jpg" alt="Заснеженная вершина Домбая." class="element__img">
+          <div class="element__desc">
+            <h2 class="element__title">Домбай</h2>
+            <button type="button" class="element__heart"></button>
+          </div>
+        </li>
+        <li class="element">
+          <img src="./images/karachaevsk.jpg" alt="Древняя крепость в горах." class="element__img">
+          <div class="element__desc">
+            <h2 class="element__title">Карачаево-Черкесия</h2>
+            <button type="button" class="element__heart"></button>
+          </div>
+        </li>
+      </ul>
+
     </section>
 
   </main>
@@ -86,16 +88,16 @@
   <section class="popup">
     <div class="popup__container">
       <h2 class="popup__title">Редактировать профиль</h2>
-      <form class="popup__inputs">
-        <input type="text" class="popup__input popup__input_name-info" placeholder="Имя">
-        <input type="text" class="popup__input popup__input_job-info" placeholder="Род деятельности">
-        <input type="submit" class="popup__button" value="Сохранить">
+      <form name="popup" class="popup__inputs">
+        <input name="Name" type="text" class="popup__input popup__input_type_name" placeholder="Имя">
+        <input name="Job" type="text" class="popup__input popup__input_type_job" placeholder="Род деятельности">
+        <button type="submit" class="popup__button">Сохранить</button>
       </form>
       <button type="button" class="popup__button-close"></button>
     </div>
   </section>
 
-  <script src="./js/index.js"></script>
+  <script src="./scripts/index.js"></script>
 </body>
 
 </html>
