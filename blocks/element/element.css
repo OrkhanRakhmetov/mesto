@@ -1,6 +1,9 @@
 .element {
-    background-color: #fff;
+    background: #fff;
+    max-height: 361px;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
     border-radius: 10px;
-    width: 100%;
-    object-fit: cover;
 }

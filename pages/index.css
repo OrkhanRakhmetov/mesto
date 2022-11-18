@@ -1,12 +1,18 @@
+/*Normalise and fonts*/
 @import url(../vendor/normalize.css);
 @import url(../vendor/fonts.css);
 
+/*Общие стили*/
 @import url(../blocks/page/page.css);
+
+/*Header*/
 @import url(../blocks/header/header.css);
 @import url(../blocks/header/__logo/header__logo.css);
 
+/*body*/
 @import url(../blocks/content/content.css);
 
+/*Profile*/
 @import url(../blocks/profile/profile.css);
 @import url(../blocks/profile/__container/profile__container.css);
 @import url(../blocks/profile/__avatar/profile__avatar.css);
@@ -17,6 +23,7 @@
 @import url(../blocks/profile/__subtitle/profile__subtitle.css);
 @import url(../blocks/profile/__add-button/profile__add-button.css);
 
+/*Elements*/
 @import url(../blocks/elements/elements.css);
 @import url(../blocks/elements/__list/elements__list.css);
 @import url(../blocks/element/element.css);
@@ -25,9 +32,11 @@
 @import url(../blocks/element/__title/element__title.css);
 @import url(../blocks/element/__heart/element__heart.css);
 
+/*Footer*/
 @import url(../blocks/footer/footer.css);
 @import url(../blocks/footer/__text/footer__text.css);
 
+/*Popup*/
 @import url(../blocks/popup/popup.css);
 @import url(../blocks/popup/__container/popup__container.css);
 @import url(../blocks/popup/__title/popup__title.css);

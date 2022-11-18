@@ -1,3 +1,9 @@
 .element__img {
+    padding: 0;
+    margin: 0;
+    max-width: 100%;
+    min-height: 282px;
+    object-fit: cover;
+    overflow: hidden;
     border-radius: 10px 10px 0 0;
 }
