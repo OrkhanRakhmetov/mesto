@@ -11,14 +11,14 @@ const profileJob = document.querySelector('.profile__subtitle');
 // Popup добавить карточку
 const popupAddElement = document.querySelector('#popupAddCard');
 const popupAddOpenButtonElement = document.querySelector('.profile__add-button');
-const popupAddCloseButtonElement = document.querySelector('.popup__button_close-add');
+const popupAddCloseButtonElement = document.querySelector('.popup__close-add');
 // Popup увеличить картинку
 const popupImage = document.querySelector('#popupBigImg');
 const bigImage = document.querySelector('.popup__big-img');
 const descImage = document.querySelector('.popup__img-desc');
 const descTitleImage = document.querySelector('.element__title');
 const popupImageOpenButton = document.querySelector('.element__button-img');
-const popupImageCloseButton = document.querySelector('.popup__button_close-enlarge');
+const popupImageCloseButton = document.querySelector('.popup__close-enlarge');
 // Popup
 const popup = document.querySelector('.popup');
 // Добавление карточки пользователем
