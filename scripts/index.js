@@ -1,8 +1,10 @@
 // DOM-узлы
+// Все попапы
+const popups = document.querySelectorAll('.popup');
 // Popup редактировать профиль
 const popupEditProfile = document.querySelector('#popupEditProfile'); 
 const popupOpenButtonElement = document.querySelector('.profile__edit-button'); 
-const popupCloseButtonElement = document.querySelector('.popup__button-close');
+const closeButtons = document.querySelectorAll('.popup__close');
 const formElement = document.querySelector('.popup__inputs');
 const nameInput = document.querySelector('.popup__input_type_name');
 const jobInput = document.querySelector('.popup__input_type_job');
@@ -11,16 +13,12 @@ const profileJob = document.querySelector('.profile__subtitle');
 // Popup добавить карточку
 const popupAddElement = document.querySelector('#popupAddCard');
 const popupAddOpenButtonElement = document.querySelector('.profile__add-button');
-const popupAddCloseButtonElement = document.querySelector('.popup__close-add');
 // Popup увеличить картинку
 const popupImage = document.querySelector('#popupBigImg');
 const bigImage = document.querySelector('.popup__big-img');
 const descImage = document.querySelector('.popup__img-desc');
 const descTitleImage = document.querySelector('.element__title');
 const popupImageOpenButton = document.querySelector('.element__button-img');
-const popupImageCloseButton = document.querySelector('.popup__close-enlarge');
-// Popup
-const popup = document.querySelector('.popup');
 // Добавление карточки пользователем
 const elemenetsContainer = document.querySelector(".elements__list");
 const nameImage = document.querySelector('.popup__input_name-img');
@@ -71,30 +69,38 @@ const handleLikeCard = (e) => {
 // Открытие попапа с сохранением введенных данных
 const openPopup = (popup) => {
 		popup.classList.add('popup_active');
-    nameInput.value = prifileName.textContent;
-    jobInput.value = profileJob.textContent;
 }
 
-//Закрытие попапа 
+// Закрытие попапа 
 const closePopup = (popup) => {
 	popup.classList.remove('popup_active');
 }
 
+closeButtons.forEach((button) => {
+  // находим 1 раз ближайший к крестику попап 
+  const popup = button.closest('.popup');
+  // устанавливаем обработчик закрытия на крестик
+  button.addEventListener('click', () => closePopup(popup));
+});
+
 // Закрытие попапа при клике на пространстве за рамками попапа
-const closePopupByClickOnOverlay = function (e) {
-  if (e.target === e.currentTarget) {
-		closePopup(popupEditProfile);
-		closePopup(popupAddElement);
-		closePopup(popupImage);
-  }
-}
+popups.forEach((popup) => {
+    popup.addEventListener('mousedown', (evt) => {
+        if (evt.target.classList.contains('popup_active')) {
+            closePopup(popup)
+        }
+        if (evt.target.classList.contains('popup__close')) {
+          closePopup(popup)
+        }
+    })
+})
 
 //Обработка отправки введенных в попап редактирования данных
-function formSubmitHandler(e) {
+function handleProfileFormSubmit(e) {
     e.preventDefault();
     prifileName.textContent = nameInput.value;
     profileJob.textContent = jobInput.value;
-    closePopup(popup);
+    closePopup(popupEditProfile);
 }
 
 // Добавление карточки пользователем
@@ -102,11 +108,13 @@ const handleSubmitAdd = (e) => {
 	e.preventDefault();
 	renderCard({name: nameImage.value, link: linkImage.value});
 	closePopup(popupAddElement);
+  e.target.reset()
 }
 
 // Увеличение карточки при нажатии на неё 
 function handleBigImage(e) {
   bigImage.src = e.target.src;
+  bigImage.alt = e.target.alt;
   descImage.textContent = e.target.alt;
   openPopup(popupImage);
 }
@@ -114,17 +122,9 @@ function handleBigImage(e) {
 //Подключение слушателей
 popupOpenButtonElement.addEventListener('click', () =>
 openPopup(popupEditProfile));
-popupCloseButtonElement.addEventListener('click', () =>
-closePopup(popupEditProfile));
 popupAddOpenButtonElement.addEventListener('click', () =>
 openPopup(popupAddElement));
-popupAddCloseButtonElement.addEventListener('click', () =>
-closePopup(popupAddElement));
-popupImageCloseButton.addEventListener('click', () =>
-closePopup(popupImage));
-popupEditProfile.addEventListener('click', closePopupByClickOnOverlay);
-popupAddElement.addEventListener('click', closePopupByClickOnOverlay);
-formElement.addEventListener('submit', formSubmitHandler);
+formElement.addEventListener('submit', handleProfileFormSubmit);
 popupAddCard.addEventListener('submit', handleSubmitAdd);
 
 // Генерация карточки 
