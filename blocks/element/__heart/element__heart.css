@@ -13,7 +13,3 @@
 .element__heart:hover {
     opacity: .5;
 }
-.element__heart:active {
-    background: url(./../../../images/svg/Union.svg);
-    opacity: 1;
-}
