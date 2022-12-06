@@ -8,7 +8,7 @@ const closeButtons = document.querySelectorAll('.popup__close');
 const formElement = document.querySelector('.popup__inputs');
 const nameInput = document.querySelector('.popup__input_type_name');
 const jobInput = document.querySelector('.popup__input_type_job');
-const prifileName = document.querySelector('.profile__title');
+const profileName = document.querySelector('.profile__title');
 const profileJob = document.querySelector('.profile__subtitle');
 // Popup добавить карточку
 const popupAddElement = document.querySelector('#popupAddCard');
@@ -76,14 +76,7 @@ const closePopup = (popup) => {
 	popup.classList.remove('popup_active');
 }
 
-closeButtons.forEach((button) => {
-  // находим 1 раз ближайший к крестику попап 
-  const popup = button.closest('.popup');
-  // устанавливаем обработчик закрытия на крестик
-  button.addEventListener('click', () => closePopup(popup));
-});
-
-// Закрытие попапа при клике на пространстве за рамками попапа
+// Закрытие попапа при нажатии на крестик и клике на пространстве за рамками попапа
 popups.forEach((popup) => {
     popup.addEventListener('mousedown', (evt) => {
         if (evt.target.classList.contains('popup_active')) {
@@ -98,7 +91,7 @@ popups.forEach((popup) => {
 //Обработка отправки введенных в попап редактирования данных
 function handleProfileFormSubmit(e) {
     e.preventDefault();
-    prifileName.textContent = nameInput.value;
+    profileName.textContent = nameInput.value;
     profileJob.textContent = jobInput.value;
     closePopup(popupEditProfile);
 }
@@ -120,8 +113,12 @@ function handleBigImage(e) {
 }
 
 //Подключение слушателей
-popupOpenButtonElement.addEventListener('click', () =>
-openPopup(popupEditProfile));
+popupOpenButtonElement.addEventListener('click', () => {
+openPopup(popupEditProfile);
+nameInput.value = profileName.textContent;
+jobInput.value = profileJob.textContent;
+});
+
 popupAddOpenButtonElement.addEventListener('click', () =>
 openPopup(popupAddElement));
 formElement.addEventListener('submit', handleProfileFormSubmit);
