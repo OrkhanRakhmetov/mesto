@@ -33,13 +33,12 @@ const checkInputValidity = (formElement, inputElement, objectInputSettings) => {
 
 function hasInvalidInput(inputList) {
   // проходим по этому массиву методом some
-return inputList.some((inputList) => {
-  // Если поле не валидно, колбэк вернёт true
-  // Обход массива прекратится и вся функция
-  // hasInvalidInput вернёт true
-
-  return !inputList.validity.valid;
-})
+  return inputList.some((inputList) => {
+    // Если поле не валидно, колбэк вернёт true
+    // Обход массива прекратится и вся функция
+    // hasInvalidInput вернёт true
+    return !inputList.validity.valid;
+  })
 }
 
 function toggleButtonState(inputList, buttonSubmit, objectInputSettings) {
