@@ -4,6 +4,10 @@ const popups = document.querySelectorAll('.popup');
 // Popup редактировать профиль
 const popupEditProfile = document.querySelector('#popupEditProfile');
 const popupOpenButtonElement = document.querySelector('.profile__edit-button');
+const popupAddOpen = document.querySelector('.profile__add-button');
+
+const formAddElement = document.querySelector('[name="popupAddCard"]');
+const formEditElement = document.querySelector('[name="popupEditProfile"]');
 
 const popupProfileForm = document.querySelector('.popup__inputs');
 const popupProfileSubmit = document.querySelector('.popup__button');
@@ -50,6 +54,30 @@ const openPopup = (popup) => {
   popup.classList.add('popup_active');
   document.addEventListener('keydown', closePopupByClickEscape);
 }
+
+popupAddOpen.addEventListener('click', () => {
+  formAddElement.reset();
+  const buttonSubmit = formAddElement.querySelector(objectInputSettings.submitButtonSelector);
+  buttonSubmit.classList.add(objectInputSettings.inactiveButtonClass);
+  buttonSubmit.setAttribute('disabled', true);
+  openPopup(popupAddElement);
+});
+
+// const popupOpenButtonElement = () => {
+//   openPopup(popupEditProfile);
+//   profileName.textContent = nameInput.value;
+//   profileJob.textContent = jobInput.value;
+//   const buttonSubmit = formAddElement.querySelector(objectInputSettings.submitButtonSelector);
+//   buttonSubmit.classList.add(objectInputSettings.inactiveButtonClass);
+//   buttonSubmit.setAttribute('disabled', true);
+// }
+// popupOpenButtonElement.addEventListener('click', () => {
+//   formEditElement.reset();
+//   const buttonSubmit = formAddElement.querySelector(objectInputSettings.submitButtonSelector);
+//   buttonSubmit.classList.add(objectInputSettings.inactiveButtonClass);
+//   buttonSubmit.setAttribute('disabled', true);
+//   openPopup(popupAddElement);
+// });
 
 // Закрытие попапа 
 const closePopup = (popup) => {
@@ -110,9 +138,6 @@ popupOpenButtonElement.addEventListener('click', () => {
 });
 
 popupAddOpenButtonElement.addEventListener('click', () => {
-  // const buttonSubmit = popupAddElement.querySelector(objectInputSettings.submitButtonSelector);
-  // buttonSubmit.classList.add(objectInputSettings.inactiveButtonClass);
-  // buttonSubmit.setAttribute('disabled', true);
   openPopup(popupAddElement);
 });
 

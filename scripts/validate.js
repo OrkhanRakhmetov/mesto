@@ -42,23 +42,28 @@ function hasInvalidInput(inputList) {
 }
 
 function toggleButtonState(inputList, buttonSubmit, objectInputSettings) {
+  // const hasInvalidInput = Array.from(inputList).some(inputList => {
+  //   return inputList.validity.valid;
+  // });
   if (hasInvalidInput(inputList)) {
-    buttonSubmit.classList.add(objectInputSettings, inactiveButtonClass);
+    // const buttonSubmit = formElement.querySelector(objectInputSettings.submitButtonSelector);
+    buttonSubmit.classList.add(objectInputSettings.inactiveButtonClass);  
     buttonSubmit.setAttribute('disabled', true);
   } else {
-    buttonSubmit.classList.remove(objectInputSettings, inactiveButtonClass);
+    // const buttonSubmit = formElement.querySelector(objectInputSettings.submitButtonSelector);
     buttonSubmit.removeAttribute('disabled');
+    buttonSubmit.classList.add(objectInputSettings.inactiveButtonClass);
   }
 };
 
 const setEventListeners = (formElement, objectInputSettings) => {
   const inputList = Array.from(formElement.querySelectorAll(objectInputSettings.inputSelector));
+  const buttonSubmit = formElement.querySelector(objectInputSettings.submitButtonSelector);
 
   inputList.forEach((inputElement) => {
     inputElement.addEventListener('input', function () {
       checkInputValidity(formElement, inputElement, objectInputSettings);
-
-      toggleButtonState(inputList, formElement, objectInputSettings);
+      toggleButtonState(inputList, buttonSubmit, formElement, objectInputSettings);
     });
   });
 };
@@ -72,19 +77,4 @@ function enableValidation(objectInputSettings) {
   });
 };
 enableValidation(objectInputSettings);
-// function enableValidation(objectInputSettings) {
-//   const formList = Array.from(document.querySelectorAll(objectInputSettings.formSelector));
-//   formList.forEach((formElement) => {
-//     formElement.addEventListener('submit', function (evt) {
-//       evt.preventDefault();
-//     });
-//     const inputs = formElement.querySelectorAll(objectInputSettings.inputSelector);
-//     const buttonSubmit = formElement.querySelector(objectInputSettings.submitButtonSelector);
-//     inputs.forEach((input) => {
-//       input.addEventListener('input', () => {
-//         checkInputValidity(input, objectInputSettings);
-//         setEventListeners(inputs, buttonSubmit, objectInputSettings);
-//       });
-//     });
-//   });
-// };
+
