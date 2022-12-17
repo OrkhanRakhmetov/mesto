@@ -9,15 +9,15 @@ const objectInputSettings = {
   errorClass: 'popup__error_visible'//селектор контейнеров для ошибок этой формы
 };
 
-const showInputError = (inputElement, errorMessage, objectInputSettings) => {
-  const errorElement = document.querySelector(`#${inputElement.id}-error`);
+const showInputError = (formElement, inputElement,errorMessage, objectInputSettings) => {
+  const errorElement = formElement.querySelector(`#${inputElement.id}-error`);
   inputElement.classList.add(objectInputSettings.inputErrorClass);
   errorElement.textContent = errorMessage;
   errorElement.classList.add(objectInputSettings.errorClass);
 };
 
-const hideInputError = (inputElement, objectInputSettings) => {
-  const errorElement = document.querySelector(`#${inputElement.id}-error`);
+const hideInputError = (formElement, inputElement, objectInputSettings) => {
+  const errorElement = formElement.querySelector(`#${inputElement.id}-error`);
   inputElement.classList.remove(objectInputSettings.inputErrorClass);
   errorElement.classList.remove(objectInputSettings.errorClass);
   errorElement.textContent = '';
