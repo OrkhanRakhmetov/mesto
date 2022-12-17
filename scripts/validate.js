@@ -9,7 +9,7 @@ const objectInputSettings = {
   errorClass: 'popup__error_visible'//селектор контейнеров для ошибок этой формы
 };
 
-const showInputError = (formElement, inputElement,errorMessage, objectInputSettings) => {
+const showInputError = (formElement, inputElement, errorMessage, objectInputSettings) => {
   const errorElement = formElement.querySelector(`#${inputElement.id}-error`);
   inputElement.classList.add(objectInputSettings.inputErrorClass);
   errorElement.textContent = errorMessage;
