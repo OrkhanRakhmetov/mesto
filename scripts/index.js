@@ -4,19 +4,21 @@ const popups = document.querySelectorAll('.popup');
 // Popup редактировать профиль
 const popupEditProfile = document.querySelector('#popupEditProfile');
 const popupOpenButtonElement = document.querySelector('.profile__edit-button');
-const popupAddOpen = document.querySelector('.profile__add-button');
+const popupAddOpen = document.querySelector('.popup__button_add');
 
 const formAddElement = document.querySelector('[name="popupAddCard"]');
 const formEditElement = document.querySelector('[name="popupEditProfile"]');
 
-const popupProfileForm = document.querySelector('.popup__inputs');
 const popupProfileSubmit = document.querySelector('.popup__button');
 
-const popupProfileName = popupProfileForm.querySelector('#name-user');
-const popupProfileJob = popupProfileForm.querySelector('#job-desc');
+const popupProfileName = document.querySelector('#name-user');
+const popupProfileJob = document.querySelector('#job-desc');
 
 const closeButtons = document.querySelectorAll('.popup__close');
 const formElement = document.querySelector('.popup__inputs');
+
+// const popupEditSubmit = document.querySelector('#popupEditSubmit');
+const popupAddSubmit = document.querySelector('#popupAddSubmit');
 const nameInput = document.querySelector('.popup__input_type_name');
 const jobInput = document.querySelector('.popup__input_type_job');
 const profileName = document.querySelector('.profile__title');
@@ -56,10 +58,9 @@ const openPopup = (popup) => {
 }
 
 const openPopupAdd = () => {
-  openPopup(formAddElement);
-  formElement.reset();
-  resetFormError(formElement, objectInputSettings);
-  disableSubmitButton(formElement, objectInputSettings);
+  openPopup(popupAddElement);
+  formAddElement.reset();
+  disableSubmitButton(popupAddSubmit, objectInputSettings);
 }
 
 // Закрытие попапа 
@@ -118,7 +119,6 @@ popupOpenButtonElement.addEventListener('click', () => {
   openPopup(popupEditProfile);
   nameInput.value = profileName.textContent;
   jobInput.value = profileJob.textContent;
-  resetFormError(formElement, objectInputSettings);
   disableSubmitButton(formElement, objectInputSettings);
 });
 

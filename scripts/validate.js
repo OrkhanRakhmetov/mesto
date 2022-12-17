@@ -53,18 +53,10 @@ const enableSubmitButton = (formElement, objectInputSettings) => {
 }
 
 function toggleButtonState(inputList, formElement, objectInputSettings) {
-  // const hasInvalidInput = Array.from(inputList).some(inputList => {
-  //   return inputList.validity.valid;
   // });
   if (hasInvalidInput(inputList)) {
-    // const buttonSubmit = formElement.querySelector(objectInputSettings.submitButtonSelector);
-    // buttonSubmit.classList.add(objectInputSettings.inactiveButtonClass);  
-    // buttonSubmit.setAttribute('disabled', true);
     disableSubmitButton(formElement, objectInputSettings);
   } else {
-    // const buttonSubmit = formElement.querySelector(objectInputSettings.submitButtonSelector);
-    // buttonSubmit.removeAttribute('disabled');
-    // buttonSubmit.classList.add(objectInputSettings.inactiveButtonClass);
     enableSubmitButton(formElement, objectInputSettings);
   }
 };
@@ -91,9 +83,3 @@ function enableValidation(objectInputSettings) {
 };
 enableValidation(objectInputSettings);
 
-const resetFormError = (formElement, objectInputSettings) => {
-  const inputList = Array.from(formElement.querySelectorAll(objectInputSettings.inputSelector));
-  inputList.forEach(inputElement => {
-    hideInputError(formElement, inputElement, objectInputSettings);
-  });
-}
