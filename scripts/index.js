@@ -55,29 +55,12 @@ const openPopup = (popup) => {
   document.addEventListener('keydown', closePopupByClickEscape);
 }
 
-popupAddOpen.addEventListener('click', () => {
-  formAddElement.reset();
-  const buttonSubmit = formAddElement.querySelector(objectInputSettings.submitButtonSelector);
-  buttonSubmit.classList.add(objectInputSettings.inactiveButtonClass);
-  buttonSubmit.setAttribute('disabled', true);
-  openPopup(popupAddElement);
-});
-
-// const popupOpenButtonElement = () => {
-//   openPopup(popupEditProfile);
-//   profileName.textContent = nameInput.value;
-//   profileJob.textContent = jobInput.value;
-//   const buttonSubmit = formAddElement.querySelector(objectInputSettings.submitButtonSelector);
-//   buttonSubmit.classList.add(objectInputSettings.inactiveButtonClass);
-//   buttonSubmit.setAttribute('disabled', true);
-// }
-// popupOpenButtonElement.addEventListener('click', () => {
-//   formEditElement.reset();
-//   const buttonSubmit = formAddElement.querySelector(objectInputSettings.submitButtonSelector);
-//   buttonSubmit.classList.add(objectInputSettings.inactiveButtonClass);
-//   buttonSubmit.setAttribute('disabled', true);
-//   openPopup(popupAddElement);
-// });
+const openPopupAdd = () => {
+  openPopup(formAddElement);
+  formElement.reset();
+  resetFormError(formElement, objectInputSettings);
+  disableSubmitButton(formElement, objectInputSettings);
+}
 
 // Закрытие попапа 
 const closePopup = (popup) => {
@@ -135,6 +118,8 @@ popupOpenButtonElement.addEventListener('click', () => {
   openPopup(popupEditProfile);
   nameInput.value = profileName.textContent;
   jobInput.value = profileJob.textContent;
+  resetFormError(formElement, objectInputSettings);
+  disableSubmitButton(formElement, objectInputSettings);
 });
 
 popupAddOpenButtonElement.addEventListener('click', () => {
