@@ -9,7 +9,7 @@ const objectInputSettings = {
   errorClass: 'popup__error_visible'//селектор контейнеров для ошибок этой формы
 };
 
-const showInputError = (inputElement, objectInputSettings) => {
+const showInputError = (inputElement, errorMessage, objectInputSettings) => {
   const errorElement = document.querySelector(`#${inputElement.id}-error`);
   inputElement.classList.add(objectInputSettings.inputErrorClass);
   errorElement.textContent = errorMessage;
@@ -31,16 +31,19 @@ const checkInputValidity = (formElement, inputElement, objectInputSettings) => {
   }
 };
 
-function hasValidInput(inputList) {
+function hasInvalidInput(inputList) {
   // проходим по этому массиву методом some
-  return inputList.every((inputList) => {
+return inputList.some((inputList) => {
+  // Если поле не валидно, колбэк вернёт true
+  // Обход массива прекратится и вся функция
+  // hasInvalidInput вернёт true
 
-    return inputList.validity.valid;
-  })
+  return !inputList.validity.valid;
+})
 }
 
 function toggleButtonState(inputList, buttonSubmit, objectInputSettings) {
-  if (hasValidInput(inputList)) {
+  if (hasInvalidInput(inputList)) {
     buttonSubmit.classList.add(objectInputSettings, inactiveButtonClass);
     buttonSubmit.setAttribute('disabled', true);
   } else {
