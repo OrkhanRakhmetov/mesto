@@ -1,30 +1,23 @@
 // DOM-узлы
 // Все попапы
 const popups = document.querySelectorAll('.popup');
-// Popup редактировать профиль
-const popupEditProfile = document.querySelector('#popupEditProfile');
-const popupOpenButtonElement = document.querySelector('.profile__edit-button');
-const popupAddOpen = document.querySelector('.popup__button_add');
-
-const formAddElement = document.querySelector('[name="popupAddCard"]');
-const formEditElement = document.querySelector('[name="popupEditProfile"]');
-
-const popupProfileSubmit = document.querySelector('.popup__button');
-
-const popupProfileName = document.querySelector('#name-user');
-const popupProfileJob = document.querySelector('#job-desc');
-
 const closeButtons = document.querySelectorAll('.popup__close');
 const formElement = document.querySelector('.popup__inputs');
-
-// const popupEditSubmit = document.querySelector('#popupEditSubmit');
-const popupAddSubmit = document.querySelector('#popupAddSubmit');
+// Popup редактировать профиль
+const popupEditProfile = document.querySelector('#popupEditProfile');
+const popupEditSubmit = document.querySelector('#popupEditSubmit');
+const popupOpenButtonElement = document.querySelector('.profile__edit-button');
+const popupProfileSubmit = document.querySelector('.popup__button');
+const popupProfileName = document.querySelector('#name-user');
+const popupProfileJob = document.querySelector('#job-desc');
 const nameInput = document.querySelector('.popup__input_type_name');
 const jobInput = document.querySelector('.popup__input_type_job');
-const profileName = document.querySelector('.profile__title');
-const profileJob = document.querySelector('.profile__subtitle');
 // Popup добавить карточку
 const popupAddElement = document.querySelector('#popupAddCard');
+const popupAddSubmit = document.querySelector('#popupAddSubmit');
+const profileName = document.querySelector('.profile__title');
+const profileJob = document.querySelector('.profile__subtitle');
+const popupAddOpen = document.querySelector('.popup__button_add');
 const popupAddOpenButtonElement = document.querySelector('.profile__add-button');
 // Popup увеличить картинку
 const popupImage = document.querySelector('#popupBigImg');
@@ -59,7 +52,7 @@ const openPopup = (popup) => {
 
 const openPopupAdd = () => {
   openPopup(popupAddElement);
-  formAddElement.reset();
+  formElement.reset();
   disableSubmitButton(popupAddSubmit, objectInputSettings);
 }
 
