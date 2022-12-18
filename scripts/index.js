@@ -1,48 +1,35 @@
-// DOM-узлы
 // Все попапы
 const popups = document.querySelectorAll('.popup');
-const closeButtons = document.querySelectorAll('.popup__close');
-const formElement = document.querySelector('.popup__inputs');
 // Popup редактировать профиль
 const popupEditProfile = document.querySelector('#popupEditProfile');//ПОПАП
 const popupFormEditProfile = popupEditProfile.querySelector('.popup__inputs_edit-profile');//ФОРМА
 const popupEditSubmit = popupFormEditProfile.querySelector('#popupEditSubmit');//кнопка из ПОПАПА
-const popupOpenButtonElement = document.querySelector('.profile__edit-button');
-const popupProfileSubmit = document.querySelector('.popup__button');
-const popupProfileName = document.querySelector('#name-user');
-const popupProfileJob = document.querySelector('#job-desc');
-const nameInput = document.querySelector('.popup__input_type_name');
-const jobInput = document.querySelector('.popup__input_type_job');
+const popupOpenButtonElement = document.querySelector('.profile__edit-button');//Кнопка попапа редактирования профиля
+const nameInput = popupEditProfile.querySelector('.popup__input_type_name');//инпут имени пользователя
+const jobInput = popupEditProfile.querySelector('.popup__input_type_job');//инпут рода деятельности пользователя
 // Popup добавить карточку
+const popupAddOpenButtonElement = document.querySelector('.profile__add-button');//Кнопка попапа добавления картинки
 const popupAddElement = document.querySelector('#popupAddCard');//ПОПАП
 const popupAddForm = popupAddElement.querySelector('.popup__inputs_add-img');//ФОРМА
 const popupAddSubmit = popupAddForm.querySelector('.popup__button_add');//кнопка из ПОПАПА
-const profileName = document.querySelector('.profile__title');
-const profileJob = document.querySelector('.profile__subtitle');
-const popupAddOpenButtonElement = document.querySelector('.profile__add-button');
+const profileName = document.querySelector('.profile__title');//Имя пользователя
+const profileJob = document.querySelector('.profile__subtitle');//Род деятельности пользователя
+
 // Popup увеличить картинку
 const popupImage = document.querySelector('#popupBigImg');
 const bigImage = document.querySelector('.popup__big-img');
-const descImage = document.querySelector('.popup__img-desc');
-const descTitleImage = document.querySelector('.element__title');
-const popupImageOpenButton = document.querySelector('.element__button-img');
+const descImage = popupImage.querySelector('.popup__img-desc');
+
 // Добавление карточки пользователем
 const elemenetsContainer = document.querySelector(".elements__list");
 const nameImage = document.querySelector('.popup__input_name-img');
 const linkImage = document.querySelector('.popup__input_link_img');
-const popupAddCard = document.querySelector('.popup__inputs_add-img');
 
-popupOpenButtonElement.addEventListener('click', () => {
-  openPopup(popupEditProfile);
-  nameInput.value = profileName.textContent;
-  jobInput.value = profileJob.textContent; 
-  disableSubmitButton(popupFormEditProfile, objectInputSettings);
-});
 
 const openPopupAdd = () => {
   openPopup(popupAddElement);
   popupAddForm.reset();
-  disableSubmitButton(popupAddForm, objectInputSettings);
+  disableSubmitButton(popupAddSubmit, objectInputSettings);
 }
 // Добавление шаблона
 const cardTemplate = document.querySelector('#element-template').content.querySelector('.element');
@@ -62,8 +49,6 @@ const openPopup = (popup) => {
   popup.classList.add('popup_active');
   document.addEventListener('keydown', closePopupByClickEscape);
 }
-
-
 
 // Закрытие попапа 
 const closePopup = (popup) => {
@@ -117,16 +102,17 @@ function handleBigImage(e) {
 
 //Подключение слушателей
 //Открытие попапа редактирования профиля, с добавлением значений в импуты, которые отображены сейчас на сайте
-
-
-popupAddOpenButtonElement.addEventListener('click', () => {
-  openPopup(popupAddElement);
+popupOpenButtonElement.addEventListener('click', () => {
+  openPopup(popupEditProfile);
+  nameInput.value = profileName.textContent;
+  jobInput.value = profileJob.textContent;
+  disableSubmitButton(popupFormEditProfile, objectInputSettings);
 });
 
 popupAddOpenButtonElement.addEventListener('click', () =>
-  openPopup(popupAddElement));
-formElement.addEventListener('submit', handleProfileFormSubmit);
-popupAddCard.addEventListener('submit', handleSubmitAdd);
+openPopup(popupAddElement));
+popupAddForm.addEventListener('submit', handleProfileFormSubmit);
+popupAddForm.addEventListener('submit', handleSubmitAdd);
 
 // Генерация карточки 
 const generateCard = (dataCard) => {
