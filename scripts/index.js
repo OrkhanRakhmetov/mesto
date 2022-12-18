@@ -4,8 +4,9 @@ const popups = document.querySelectorAll('.popup');
 const closeButtons = document.querySelectorAll('.popup__close');
 const formElement = document.querySelector('.popup__inputs');
 // Popup редактировать профиль
-const popupEditProfile = document.querySelector('#popupEditProfile');
-const popupEditSubmit = document.querySelector('#popupEditSubmit');
+const popupEditProfile = document.querySelector('#popupEditProfile');//ПОПАП
+const popupFormEditProfile = popupEditProfile.querySelector('.popup__inputs_edit-profile');//ФОРМА
+const popupEditSubmit = popupFormEditProfile.querySelector('#popupEditSubmit');//кнопка из ПОПАПА
 const popupOpenButtonElement = document.querySelector('.profile__edit-button');
 const popupProfileSubmit = document.querySelector('.popup__button');
 const popupProfileName = document.querySelector('#name-user');
@@ -13,11 +14,11 @@ const popupProfileJob = document.querySelector('#job-desc');
 const nameInput = document.querySelector('.popup__input_type_name');
 const jobInput = document.querySelector('.popup__input_type_job');
 // Popup добавить карточку
-const popupAddElement = document.querySelector('#popupAddCard');
-const popupAddSubmit = document.querySelector('#popupAddSubmit');
+const popupAddElement = document.querySelector('#popupAddCard');//ПОПАП
+const popupAddForm = popupAddElement.querySelector('.popup__inputs_add-img');//ФОРМА
+const popupAddSubmit = popupAddForm.querySelector('.popup__button_add');//кнопка из ПОПАПА
 const profileName = document.querySelector('.profile__title');
 const profileJob = document.querySelector('.profile__subtitle');
-const popupAddOpen = document.querySelector('.popup__button_add');
 const popupAddOpenButtonElement = document.querySelector('.profile__add-button');
 // Popup увеличить картинку
 const popupImage = document.querySelector('#popupBigImg');
@@ -31,6 +32,18 @@ const nameImage = document.querySelector('.popup__input_name-img');
 const linkImage = document.querySelector('.popup__input_link_img');
 const popupAddCard = document.querySelector('.popup__inputs_add-img');
 
+popupOpenButtonElement.addEventListener('click', () => {
+  openPopup(popupEditProfile);
+  nameInput.value = profileName.textContent;
+  jobInput.value = profileJob.textContent; 
+  disableSubmitButton(popupFormEditProfile, objectInputSettings);
+});
+
+const openPopupAdd = () => {
+  openPopup(popupAddElement);
+  popupAddForm.reset();
+  disableSubmitButton(popupAddForm, objectInputSettings);
+}
 // Добавление шаблона
 const cardTemplate = document.querySelector('#element-template').content.querySelector('.element');
 
@@ -50,11 +63,7 @@ const openPopup = (popup) => {
   document.addEventListener('keydown', closePopupByClickEscape);
 }
 
-const openPopupAdd = () => {
-  openPopup(popupAddElement);
-  formElement.reset();
-  disableSubmitButton(popupAddSubmit, objectInputSettings);
-}
+
 
 // Закрытие попапа 
 const closePopup = (popup) => {
@@ -108,12 +117,7 @@ function handleBigImage(e) {
 
 //Подключение слушателей
 //Открытие попапа редактирования профиля, с добавлением значений в импуты, которые отображены сейчас на сайте
-popupOpenButtonElement.addEventListener('click', () => {
-  openPopup(popupEditProfile);
-  nameInput.value = profileName.textContent;
-  jobInput.value = profileJob.textContent;
-  disableSubmitButton(formElement, objectInputSettings);
-});
+
 
 popupAddOpenButtonElement.addEventListener('click', () => {
   openPopup(popupAddElement);
