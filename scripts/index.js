@@ -28,8 +28,8 @@ const linkImage = document.querySelector('.popup__input_link_img');
 
 const openPopupAdd = () => {
   openPopup(popupAddElement);
-  popupAddForm.reset();
-  disableSubmitButton(popupAddSubmit, objectInputSettings);
+  popupAddElement.reset();
+  disableSubmitButton(popupAddForm, objectInputSettings);
 }
 // Добавление шаблона
 const cardTemplate = document.querySelector('#element-template').content.querySelector('.element');
@@ -113,6 +113,7 @@ popupAddOpenButtonElement.addEventListener('click', () =>
 openPopup(popupAddElement));
 popupFormEditProfile.addEventListener('submit', handleProfileFormSubmit);
 popupAddForm.addEventListener('submit', handleSubmitAdd);
+disableSubmitButton(popupAddForm, objectInputSettings);
 
 // Генерация карточки 
 const generateCard = (dataCard) => {

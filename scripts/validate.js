@@ -53,7 +53,7 @@ const enableSubmitButton = (formElement, objectInputSettings) => {
 }
 
 function toggleButtonState(inputList, formElement, objectInputSettings) {
-  // });
+  
   if (hasInvalidInput(inputList)) {
     disableSubmitButton(formElement, objectInputSettings);
   } else {
