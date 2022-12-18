@@ -14,23 +14,14 @@ const popupAddForm = popupAddElement.querySelector('.popup__inputs_add-img');//�
 const popupAddSubmit = popupAddForm.querySelector('.popup__button_add');//кнопка из ПОПАПА
 const profileName = document.querySelector('.profile__title');//Имя пользователя
 const profileJob = document.querySelector('.profile__subtitle');//Род деятельности пользователя
-
 // Popup увеличить картинку
 const popupImage = document.querySelector('#popupBigImg');
 const bigImage = document.querySelector('.popup__big-img');
 const descImage = popupImage.querySelector('.popup__img-desc');
-
 // Добавление карточки пользователем
 const elemenetsContainer = document.querySelector(".elements__list");
 const nameImage = document.querySelector('.popup__input_name-img');
 const linkImage = document.querySelector('.popup__input_link_img');
-
-
-const openPopupAdd = () => {
-  openPopup(popupAddElement);
-  popupAddElement.reset();
-  disableSubmitButton(popupAddForm, objectInputSettings);
-}
 // Добавление шаблона
 const cardTemplate = document.querySelector('#element-template').content.querySelector('.element');
 
@@ -100,6 +91,11 @@ function handleBigImage(e) {
   openPopup(popupImage);
 }
 
+const openPopupAdd = () => {
+  openPopup(popupAddElement);
+  popupAddElement.reset();
+  disableSubmitButton(popupAddForm, objectInputSettings);
+}
 //Подключение слушателей
 //Открытие попапа редактирования профиля, с добавлением значений в импуты, которые отображены сейчас на сайте
 popupOpenButtonElement.addEventListener('click', () => {
@@ -109,11 +105,12 @@ popupOpenButtonElement.addEventListener('click', () => {
   disableSubmitButton(popupFormEditProfile, objectInputSettings);
 });
 
-popupAddOpenButtonElement.addEventListener('click', () =>
-openPopup(popupAddElement));
-popupFormEditProfile.addEventListener('submit', handleProfileFormSubmit);
-popupAddForm.addEventListener('submit', handleSubmitAdd);
-disableSubmitButton(popupAddForm, objectInputSettings);
+popupAddOpenButtonElement.addEventListener('click', () => {
+  openPopup(popupAddElement)
+  popupFormEditProfile.addEventListener('submit', handleProfileFormSubmit);
+  popupAddForm.addEventListener('submit', handleSubmitAdd);
+  disableSubmitButton(popupAddForm, objectInputSettings);
+});
 
 // Генерация карточки 
 const generateCard = (dataCard) => {
