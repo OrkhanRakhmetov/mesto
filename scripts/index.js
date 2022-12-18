@@ -111,7 +111,7 @@ popupOpenButtonElement.addEventListener('click', () => {
 
 popupAddOpenButtonElement.addEventListener('click', () =>
 openPopup(popupAddElement));
-popupAddForm.addEventListener('submit', handleProfileFormSubmit);
+popupFormEditProfile.addEventListener('submit', handleProfileFormSubmit);
 popupAddForm.addEventListener('submit', handleSubmitAdd);
 
 // Генерация карточки 
