@@ -1,6 +1,6 @@
 // включение валидации вызовом enableValidation
 // все настройки передаются при вызове
-const objectInputSettings = {
+const object = {
   formSelector: '.popup__inputs',//селектор формы
   inputSelector: '.popup__input',//селектор инпутов внутри этой формы
   submitButtonSelector: '.popup__button',//селектор кнопки сабмита этой формы
@@ -9,25 +9,25 @@ const objectInputSettings = {
   errorClass: 'popup__error_visible'//селектор контейнеров для ошибок этой формы
 };
 
-const showInputError = (formElement, inputElement, errorMessage, objectInputSettings) => {
+const showInputError = (formElement, inputElement, errorMessage, object) => {
   const errorElement = formElement.querySelector(`#${inputElement.id}-error`);
-  inputElement.classList.add(objectInputSettings.inputErrorClass);
+  inputElement.classList.add(object.inputErrorClass);
   errorElement.textContent = errorMessage;
-  errorElement.classList.add(objectInputSettings.errorClass);
+  errorElement.classList.add(object.errorClass);
 };
 
-const hideInputError = (formElement, inputElement, objectInputSettings) => {
+const hideInputError = (formElement, inputElement, object) => {
   const errorElement = formElement.querySelector(`#${inputElement.id}-error`);
-  inputElement.classList.remove(objectInputSettings.inputErrorClass);
-  errorElement.classList.remove(objectInputSettings.errorClass);
+  inputElement.classList.remove(object.inputErrorClass);
+  errorElement.classList.remove(object.errorClass);
   errorElement.textContent = '';
 };
 
-const checkInputValidity = (formElement, inputElement, objectInputSettings) => {
+const checkInputValidity = (formElement, inputElement, object) => {
   if (!inputElement.validity.valid) {
-    showInputError(formElement, inputElement, inputElement.validationMessage, objectInputSettings);
+    showInputError(formElement, inputElement, inputElement.validationMessage, object);
   } else {
-    hideInputError(formElement, inputElement, objectInputSettings);
+    hideInputError(formElement, inputElement, object);
   }
 };
 
@@ -40,46 +40,54 @@ function hasInvalidInput(inputList) {
     return !inputList.validity.valid;
   })
 
-} const disableSubmitButton = (formElement, objectInputSettings) => {
-  const submitButton = formElement.querySelector(objectInputSettings.submitButtonSelector);
-  submitButton.classList.add(objectInputSettings.inactiveButtonClass);
+} const disableSubmitButton = (formElement, object) => {
+  const submitButton = formElement.querySelector(object.submitButtonSelector);
+  submitButton.classList.add(object.inactiveButtonClass);
   submitButton.setAttribute('disabled', true);
 }
 
-const enableSubmitButton = (formElement, objectInputSettings) => {
-  const submitButton = formElement.querySelector(objectInputSettings.submitButtonSelector);
-  submitButton.classList.remove(objectInputSettings.inactiveButtonClass);
+const enableSubmitButton = (formElement, object) => {
+  const submitButton = formElement.querySelector(object.submitButtonSelector);
+  submitButton.classList.remove(object.inactiveButtonClass);
   submitButton.removeAttribute('disabled');
 }
 
-function toggleButtonState(inputList, formElement, objectInputSettings) {
+function toggleButtonState(inputList, formElement, object) {
   
   if (hasInvalidInput(inputList)) {
-    disableSubmitButton(formElement, objectInputSettings);
+    disableSubmitButton(formElement, object);
   } else {
-    enableSubmitButton(formElement, objectInputSettings);
+    enableSubmitButton(formElement, object);
   }
 };
 
-const setEventListeners = (formElement, objectInputSettings) => {
-  const inputList = Array.from(formElement.querySelectorAll(objectInputSettings.inputSelector));
+const setEventListeners = (formElement, object) => {
+  const inputList = Array.from(formElement.querySelectorAll(object.inputSelector));
+ // деактивируем кнопку при 1й загрузке сайта
+  toggleButtonState(inputList, formElement, object);
 
+  formElement.addEventListener('reset', () => {
+    // `setTimeout` нужен для того, чтобы дождаться очищения формы (вызов уйдет в конце стэка) и только потом вызвать `toggleButtonState`
+    setTimeout(() => {
+      toggleButtonState(inputList, formElement, object);
+    }, 0); // достаточно указать 0 миллисекунд, чтобы после `reset` уже сработало действие
+  });
   inputList.forEach((inputElement) => {
     inputElement.addEventListener('input', function () {
-      checkInputValidity(formElement, inputElement, objectInputSettings);
-      toggleButtonState(inputList, formElement, objectInputSettings);
+      checkInputValidity(formElement, inputElement, object);
+      toggleButtonState(inputList, formElement, object);
     });
   });
 };
 
 // функция запускает процесс наложения валидации на формы
-function enableValidation(objectInputSettings) {
-  const formList = Array.from(document.querySelectorAll(objectInputSettings.formSelector));
+function enableValidation(object) {
+  const formList = Array.from(document.querySelectorAll(object.formSelector));
 
   formList.forEach((formElement) => {
-    setEventListeners(formElement, objectInputSettings);
+    setEventListeners(formElement, object);
   });
 };
-enableValidation(objectInputSettings);
+enableValidation(object);
 
 
