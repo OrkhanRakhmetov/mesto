@@ -9,8 +9,8 @@ const elementsCards = [
       link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/chelyabinsk-oblast.jpg'
     },
     {
-      name: 'Иваново',
-      link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/ivanovo.jpg'
+      name: 'Москва',
+      link: 'https://media.istockphoto.com/id/155376571/photo/heart-of-moscow.jpg?b=1&s=170667a&w=0&k=20&c=uC3XtZqgb7p-RLwX84mk_R-fwkBYzDPT-QCylGHXIng='
     },
     {
       name: 'Камчатка',
