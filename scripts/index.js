@@ -1,3 +1,10 @@
+// Импорты
+
+import { elementsCards } from './cards.js';
+import { Card } from './Card.js';
+import { FormValidator } from './FormValidator.js';
+
+
 // Все попапы
 const popups = document.querySelectorAll('.popup');
 // Popup редактировать профиль
@@ -24,25 +31,30 @@ const elemenetsContainer = document.querySelector(".elements__list");
 const nameImage = document.querySelector('.popup__input_name-img');
 const linkImage = document.querySelector('.popup__input_link_img');
 // Добавление шаблона
-const cardTemplate = document.querySelector('#element-template').content.querySelector('.element');
+// const cardTemplate = document.querySelector('#element-template').content.querySelector('.element');
 
-// Удаление карточки из массива
-const handleDeleteCard = (e) => {
-  e.target.closest('.element').remove();
+function createCard(dataCard) {
+  const card = new Card(dataCard, '#element-template', hendleBigImage);
+  const cardElement = card.generateCard();
+  return cardElement;
 }
+// Удаление карточки из массива
+// const handleDeleteCard = (e) => {
+//   e.target.closest('.element').remove();
+// }
 
 // Добавление лайка
-const handleLikeCard = (e) => {
-  e.target.classList.toggle('element_heart-active');
-}
+// const handleLikeCard = (e) => {
+//   e.target.classList.toggle('element_heart-active');
+// }
 
-// Открытие попапа 
+// Открытие попапа !!!!
 const openPopup = (popup) => {
   popup.classList.add('popup_active');
   document.addEventListener('keydown', closePopupByClickEscape);
 }
 
-// Закрытие попапа 
+// Закрытие попапа !!!
 const closePopup = (popup) => {
   popup.classList.remove('popup_active');
   document.removeEventListener('keydown', closePopupByClickEscape);
@@ -84,8 +96,8 @@ const handleSubmitAdd = (e) => {
   e.target.reset()
 }
 
-//Функция увеличения карточки при нажатии на неё 
-function handleBigImage(dataCard) {
+// Функция увеличения карточки при нажатии на неё 
+function hendleBigImage(dataCard) {
   bigImage.src = dataCard.link;
   bigImage.alt = dataCard.name;
   descImage.textContent = dataCard.name;
@@ -112,32 +124,32 @@ popupOpenButtonElement.addEventListener('click', () => {
 popupAddOpenButtonElement.addEventListener('click', openPopupAdd);
 
 // Генерация карточки 
-const generateCard = (dataCard) => {
-  const newCard = cardTemplate.cloneNode(true);
-  const name = newCard.querySelector('.element__title');
-  name.textContent = dataCard.name;
-  const image = newCard.querySelector('.element__img');
-  image.src = dataCard.link;
-  image.alt = dataCard.name;
+// const generateCard = (dataCard) => {
+//   const newCard = cardTemplate.cloneNode(true);
+//   const name = newCard.querySelector('.element__title');
+//   name.textContent = dataCard.name;
+//   const image = newCard.querySelector('.element__img');
+//   image.src = dataCard.link;
+//   image.alt = dataCard.name;
 
-  newCard.querySelector('.element__delete').addEventListener('click', handleDeleteCard);
-  // const deleteBtn = newCard.querySelector();
-  // deleteBtn.addEventListener('click', );
+//   newCard.querySelector('.element__delete').addEventListener('click', handleDeleteCard);
+//   // const deleteBtn = newCard.querySelector();
+//   // deleteBtn.addEventListener('click', );
 
-  newCard.querySelector('.element__heart').addEventListener('click', handleLikeCard);
-  // const likeBtn = newCard.querySelector('.element__heart');
-  // likeBtn.addEventListener('click', handleLikeCard);
+//   newCard.querySelector('.element__heart').addEventListener('click', handleLikeCard);
+//   // const likeBtn = newCard.querySelector('.element__heart');
+//   // likeBtn.addEventListener('click', handleLikeCard);
 
-  newCard.querySelector('.element__button-img').addEventListener('click', () => handleBigImage(dataCard));
-  // const cursorImage = newCard.querySelector('.element__button-img');
-  // cursorImage.addEventListener('click', () => handleBigImage(dataCard));
+//   newCard.querySelector('.element__button-img').addEventListener('click', () => handleBigImage(dataCard));
+//   // const cursorImage = newCard.querySelector('.element__button-img');
+//   // cursorImage.addEventListener('click', () => handleBigImage(dataCard));
 
-  return newCard;
-}
+//   return newCard;
+// }
 
 // Добавление карточки из массива
 const renderCard = (dataCard) => {
-  elemenetsContainer.prepend(generateCard(dataCard));
+  elemenetsContainer.prepend(createCard(dataCard));
 }
 
 popupFormEditProfile.addEventListener('submit', handleProfileFormSubmit);
@@ -145,3 +157,12 @@ popupAddForm.addEventListener('submit', handleSubmitAdd);
 
 // Рендер всех карточек
 elementsCards.forEach(renderCard);
+
+const object = {
+  formSelector: '.popup__inputs',//селектор формы
+  inputSelector: '.popup__input',//селектор инпутов внутри этой формы
+  submitButtonSelector: '.popup__button',//селектор кнопки сабмита этой формы
+  inactiveButtonClass: 'popup__button_disabled',//класс модификатор для дизэйбла кнопки
+  inputErrorClass: 'popup__input_type_error',//класс модификатор для инпутов при возникновении ошибки
+  errorClass: 'popup__error_visible'//селектор контейнеров для ошибок этой формы
+};

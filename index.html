@@ -6,6 +6,10 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="stylesheet" href="./pages/index.css">
+  <script type="module" defer src="./scripts/cards.js"></script>
+  <script type="module" defer src="./scripts/card.js"></script>
+  <!-- <script type="module" defer src="./scripts/validate.js"></script> -->
+  <script type="module" defer src="./scripts/index.js"></script>
   <title>Mesto</title>
 </head>
 
@@ -48,7 +52,7 @@
             <button type="button" class="element__delete"></button>
           </div>
         </li>
-        
+
       </template>
 
     </section>
@@ -63,13 +67,11 @@
     <div class="popup__container">
       <h2 class="popup__title">Редактировать профиль</h2>
       <form name="popupEditProfile" class="popup__inputs popup__inputs_edit-profile" novalidate>
-        <input id="name-user" name="Name" type="text" class="popup__input popup__input_type_name" placeholder="Имя" minlength="2"
-        maxlength="40"
-        required>
+        <input id="name-user" name="Name" type="text" class="popup__input popup__input_type_name" placeholder="Имя"
+          minlength="2" maxlength="40" required>
         <span class="popup__input-error" id="name-user-error"></span>
-        <input id="job-desc" name="Job" type="text" class="popup__input popup__input_type_job" placeholder="Род деятельности" minlength="2"
-        maxlength="200"
-        required>
+        <input id="job-desc" name="Job" type="text" class="popup__input popup__input_type_job"
+          placeholder="Род деятельности" minlength="2" maxlength="200" required>
         <span class="popup__input-error" id="job-desc-error"></span>
         <button id="popupEditSubmit" type="submit" class="popup__button popup__button_edit">Сохранить</button>
       </form>
@@ -81,11 +83,11 @@
     <div class="popup__container">
       <h2 class="popup__title">Новое место</h2>
       <form name="popupAddCard" class="popup__inputs popup__inputs_add-img" novalidate>
-        <input id="name-img" name="NameImg" type="text" class="popup__input popup__input_name-img" placeholder="Название" minlength="2"
-        maxlength="30"
-        required> 
+        <input id="name-img" name="NameImg" type="text" class="popup__input popup__input_name-img"
+          placeholder="Название" minlength="2" maxlength="30" required>
         <span class="popup__input-error" id="name-img-error"></span>
-        <input id="link-img" name="LinkImg" type="url" class="popup__input popup__input_link_img" placeholder="Ссылка на картинку" required>
+        <input id="link-img" name="LinkImg" type="url" class="popup__input popup__input_link_img"
+          placeholder="Ссылка на картинку" required>
         <span class="popup__input-error" id="link-img-error"></span>
         <button id="popupAddSubmit" type="submit" class="popup__button popup__button_add">Создать</button>
       </form>
@@ -102,9 +104,9 @@
     </div>
   </section>
 
-  <script src="./scripts/cards.js"></script>
+  <!-- <script src="./scripts/cards.js"></script>
   <script src="./scripts/validate.js"></script>
-  <script src="./scripts/index.js"></script>
+  <script src="./scripts/index.js"></script> -->
 </body>
 
 </html>
