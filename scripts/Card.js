@@ -43,7 +43,7 @@ export class Card {
     this._likeElement.classList.toggle('element_heart-active');
   }
 
-  
+
   _setEventListeners() {
 
     this._deleteElement.addEventListener('click', () => {

@@ -1,8 +1,8 @@
 // Импорты
-
 import { elementsCards } from './cards.js';
 import { Card } from './Card.js';
 import { FormValidator } from './FormValidator.js';
+import { openPopup, closePopup, closePopupByClickEscape } from './utils.js';
 
 
 // Все попапы
@@ -10,7 +10,6 @@ const popups = document.querySelectorAll('.popup');
 // Popup редактировать профиль
 const popupEditProfile = document.querySelector('#popupEditProfile');//Попап редактирования профиля
 const popupFormEditProfile = document.forms["popupEditProfile"];//Форма редактирования профиля
-// const popupFormEditProfile = popupEditProfile.querySelector('.popup__inputs_edit-profile');//ФОРМА
 const popupEditSubmit = popupFormEditProfile.querySelector('#popupEditSubmit');//кнопка из ПОПАПА
 const popupOpenButtonElement = document.querySelector('.profile__edit-button');//Кнопка попапа редактирования профиля
 const nameInput = popupEditProfile.querySelector('.popup__input_type_name');//инпут имени пользователя
@@ -31,43 +30,20 @@ const elemenetsContainer = document.querySelector(".elements__list");
 const nameImage = document.querySelector('.popup__input_name-img');
 const linkImage = document.querySelector('.popup__input_link_img');
 // Добавление шаблона
-// const cardTemplate = document.querySelector('#element-template').content.querySelector('.element');
+
+const object = {
+  formSelector: '.popup__inputs',//селектор формы
+  inputSelector: '.popup__input',//селектор инпутов внутри этой формы
+  submitButtonSelector: '.popup__button',//селектор кнопки сабмита этой формы
+  inactiveButtonClass: 'popup__button_disabled',//класс модификатор для дизэйбла кнопки
+  inputErrorClass: 'popup__input_type_error',//класс модификатор для инпутов при возникновении ошибки
+  errorClass: 'popup__error_visible'//селектор контейнеров для ошибок этой формы
+};
 
 function createCard(dataCard) {
   const card = new Card(dataCard, '#element-template', hendleBigImage);
   const cardElement = card.generateCard();
   return cardElement;
-}
-
-
-// Удаление карточки из массива
-// const handleDeleteCard = (e) => {
-//   e.target.closest('.element').remove();
-// }
-
-// Добавление лайка
-// const handleLikeCard = (e) => {
-//   e.target.classList.toggle('element_heart-active');
-// }
-
-// Открытие попапа !!!!
-const openPopup = (popup) => {
-  popup.classList.add('popup_active');
-  document.addEventListener('keydown', closePopupByClickEscape);
-}
-
-// Закрытие попапа !!!
-const closePopup = (popup) => {
-  popup.classList.remove('popup_active');
-  document.removeEventListener('keydown', closePopupByClickEscape);
-}
-
-// Закрытие попапа по нажатию Escape
-function closePopupByClickEscape(e) {
-  if (e.key === 'Escape') {
-    const activePopup = document.querySelector('.popup_active');
-    closePopup(activePopup);
-  }
 }
 
 // Закрытие попапа при нажатии на крестик и клике на пространстве за рамками попапа
@@ -99,10 +75,10 @@ const handleSubmitAdd = (e) => {
 }
 
 // Функция увеличения карточки при нажатии на неё 
-function hendleBigImage(dataCard) {
-  bigImage.src = dataCard.link;
-  bigImage.alt = dataCard.name;
-  descImage.textContent = dataCard.name;
+function hendleBigImage(name, link) {
+  bigImage.src = link;
+  bigImage.alt = name;
+  descImage.textContent = name;
   openPopup(popupImage);
 }
 
@@ -136,7 +112,7 @@ const renderCard = (dataCard) => {
 // Рендер всех карточек
 elementsCards.forEach(renderCard);
 
- // Валидация
+// Валидация
 const formValidators = {}
 
 const enableValidation = (config) => {
@@ -151,12 +127,3 @@ const enableValidation = (config) => {
 };
 
 enableValidation(object);
-
-const object = {
-  formSelector: '.popup__inputs',//селектор формы
-  inputSelector: '.popup__input',//селектор инпутов внутри этой формы
-  submitButtonSelector: '.popup__button',//селектор кнопки сабмита этой формы
-  inactiveButtonClass: 'popup__button_disabled',//класс модификатор для дизэйбла кнопки
-  inputErrorClass: 'popup__input_type_error',//класс модификатор для инпутов при возникновении ошибки
-  errorClass: 'popup__error_visible'//селектор контейнеров для ошибок этой формы
-};
