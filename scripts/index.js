@@ -38,6 +38,8 @@ function createCard(dataCard) {
   const cardElement = card.generateCard();
   return cardElement;
 }
+
+
 // Удаление карточки из массива
 // const handleDeleteCard = (e) => {
 //   e.target.closest('.element').remove();
@@ -108,7 +110,7 @@ function hendleBigImage(dataCard) {
 const openPopupAdd = () => {
   openPopup(popupAddElement);
   popupAddForm.reset();
-  disableSubmitButton(popupAddForm, object);
+  formValidators['popupAddCard'].resetValidation();
 }
 
 //Подключение слушателей
@@ -117,46 +119,38 @@ popupOpenButtonElement.addEventListener('click', () => {
   openPopup(popupEditProfile);
   nameInput.value = profileName.textContent;
   jobInput.value = profileJob.textContent;
-  disableSubmitButton(popupFormEditProfile, object);
+  formValidators['popupEditProfile'].resetValidation();
 });
 
 //Открытие попапа добавления картинки
 popupAddOpenButtonElement.addEventListener('click', openPopupAdd);
 
-// Генерация карточки 
-// const generateCard = (dataCard) => {
-//   const newCard = cardTemplate.cloneNode(true);
-//   const name = newCard.querySelector('.element__title');
-//   name.textContent = dataCard.name;
-//   const image = newCard.querySelector('.element__img');
-//   image.src = dataCard.link;
-//   image.alt = dataCard.name;
-
-//   newCard.querySelector('.element__delete').addEventListener('click', handleDeleteCard);
-//   // const deleteBtn = newCard.querySelector();
-//   // deleteBtn.addEventListener('click', );
-
-//   newCard.querySelector('.element__heart').addEventListener('click', handleLikeCard);
-//   // const likeBtn = newCard.querySelector('.element__heart');
-//   // likeBtn.addEventListener('click', handleLikeCard);
-
-//   newCard.querySelector('.element__button-img').addEventListener('click', () => handleBigImage(dataCard));
-//   // const cursorImage = newCard.querySelector('.element__button-img');
-//   // cursorImage.addEventListener('click', () => handleBigImage(dataCard));
-
-//   return newCard;
-// }
+popupFormEditProfile.addEventListener('submit', handleProfileFormSubmit);
+popupAddForm.addEventListener('submit', handleSubmitAdd);
 
 // Добавление карточки из массива
 const renderCard = (dataCard) => {
   elemenetsContainer.prepend(createCard(dataCard));
 }
 
-popupFormEditProfile.addEventListener('submit', handleProfileFormSubmit);
-popupAddForm.addEventListener('submit', handleSubmitAdd);
-
 // Рендер всех карточек
 elementsCards.forEach(renderCard);
+
+ // Валидация
+const formValidators = {}
+
+const enableValidation = (config) => {
+  const formList = Array.from(document.querySelectorAll('.popup__inputs'));
+  formList.forEach((formElement) => {
+    const validator = new FormValidator(config, formElement);
+    const formName = formElement.getAttribute('name');
+
+    formValidators[formName] = validator;
+    validator.enableValidation();
+  });
+};
+
+enableValidation(object);
 
 const object = {
   formSelector: '.popup__inputs',//селектор формы
