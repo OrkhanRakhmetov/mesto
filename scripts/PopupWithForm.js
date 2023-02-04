@@ -3,7 +3,7 @@ import { Popup } from "./Popup.js";
 //Класс PopupWithForm, который наследует от Popup.
 //Кроме селектора попапа принимает в конструктор колбэк сабмита формы.
 export class PopupWithForm extends Popup {
-  constructor(selector, { handleSubmitForm }) {
+  constructor( { handleSubmitForm }, selector) {
     super(selector);
     this._handleSubmitForm = handleSubmitForm;
     this._form = this._popup.querySelector('.popup__inputs')
