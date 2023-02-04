@@ -1,11 +1,11 @@
 export class Card {
   // в конструкторе будут динамические данные,
   // для каждого экземпляра свои
-  constructor(dataCard, templateSelector, hendleBigImage) {
+  constructor({dataCard, handleCardClick}, templateSelector) {
     this._name = dataCard.name;
     this._link = dataCard.link;
     this._templateSelector = templateSelector;
-    this._hendleBigImage = hendleBigImage;
+    this._handleCardClick = handleCardClick;
   }
 
   _getTemplate() {
@@ -55,7 +55,7 @@ export class Card {
     });
 
     this._imgElement.addEventListener('click', () => {
-      this._hendleBigImage(this._name, this._link);
+      this._handleCardClick();
     });
 
   }
