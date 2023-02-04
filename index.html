@@ -67,10 +67,10 @@
     <div class="popup__container">
       <h2 class="popup__title">Редактировать профиль</h2>
       <form name="popupEditProfile" class="popup__inputs popup__inputs_edit-profile" novalidate>
-        <input id="name-user" name="Name" type="text" class="popup__input popup__input_type_name" placeholder="Имя"
+        <input id="name-user" name="name" type="text" class="popup__input popup__input_type_name" placeholder="Имя"
           minlength="2" maxlength="40" required>
         <span class="popup__input-error" id="name-user-error"></span>
-        <input id="job-desc" name="Job" type="text" class="popup__input popup__input_type_job"
+        <input id="job-desc" name="job" type="text" class="popup__input popup__input_type_job"
           placeholder="Род деятельности" minlength="2" maxlength="200" required>
         <span class="popup__input-error" id="job-desc-error"></span>
         <button id="popupEditSubmit" type="submit" class="popup__button popup__button_edit">Сохранить</button>
@@ -83,10 +83,10 @@
     <div class="popup__container">
       <h2 class="popup__title">Новое место</h2>
       <form name="popupAddCard" class="popup__inputs popup__inputs_add-img" novalidate>
-        <input id="name-img" name="NameImg" type="text" class="popup__input popup__input_name-img"
+        <input id="name-img" name="name" type="text" class="popup__input popup__input_name-img"
           placeholder="Название" minlength="2" maxlength="30" required>
         <span class="popup__input-error" id="name-img-error"></span>
-        <input id="link-img" name="LinkImg" type="url" class="popup__input popup__input_link_img"
+        <input id="link-img" name="link" type="url" class="popup__input popup__input_link_img"
           placeholder="Ссылка на картинку" required>
         <span class="popup__input-error" id="link-img-error"></span>
         <button id="popupAddSubmit" type="submit" class="popup__button popup__button_add">Создать</button>

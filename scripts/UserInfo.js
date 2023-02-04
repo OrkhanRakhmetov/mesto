@@ -5,14 +5,15 @@ export class UserInfo {
   }
 
   getUserInfo() {
-    return {
-      name: this._profileName.textContent,
-      info: this._profileInfo.textContent
-    };
+    const user = {};
+    user.name = this._profileName.textContent;
+    user.job = this._profileInfo.textContent;
+    
+    return user;
   }
 
-  setUserInfo({ name, info }) {
+  setUserInfo({ name , job }) {
     this._profileName.textContent = name;
-    this._profileInfo.textContent = info;
+    this._profileInfo.textContent = job;
   }
 }

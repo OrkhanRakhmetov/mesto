@@ -55,7 +55,7 @@ export class Card {
     });
 
     this._imgElement.addEventListener('click', () => {
-      this._handleCardClick();
+      this._handleCardClick(this._link, this._name);
     });
 
   }
