@@ -6,24 +6,21 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="stylesheet" href="./pages/index.css">
-  <!-- <script type="module" defer src="./scripts/cards.js"></script> -->
-  <!-- <script type="module" defer src="./scripts/card.js"></script> -->
-  <!-- <script type="module" defer src="./scripts/validate.js"></script> -->
-  <script type="module" defer src="./scripts/index.js"></script>
+  <script type="module" defer src="./pages/index.js"></script>
   <title>Mesto</title>
 </head>
 
 <body class="page">
 
   <header class="header">
-    <img src="./images/svg/logo.svg" alt="Логотип страници" class="header__logo">
+    <img src="<%=require(./images/svg/logo.svg)%>" alt="Логотип страници" class="header__logo">
   </header>
 
   <main class="content">
 
     <section class="profile">
       <div class="profile__container">
-        <img src="./images/profile-image.jpg" alt="Аватарка профиля" class="profile__avatar">
+        <img src="<%=require('./images/profile-image.jpg')%>" alt="Аватарка профиля" class="profile__avatar">
         <div class="profile__info">
           <div class="profile__info-name">
             <h1 class="profile__title">Жак-Ив Кусто</h1>
@@ -43,8 +40,7 @@
 
         <li class="element">
           <button type="button" class="element__button-img">
-            <img src="https://pictures.s3.yandex.net/frontend-developer/cards-compressed/arkhyz.jpg" alt=""
-              class="element__img">
+            <img class="element__img">
           </button>
           <div class="element__desc">
             <h2 class="element__title"></h2>
@@ -97,8 +93,7 @@
 
   <section class="popup popup_img_enlarge" id="popupBigImg">
     <div class="popup__enlarge-container">
-      <img src="https://pictures.s3.yandex.net/frontend-developer/cards-compressed/arkhyz.jpg" alt=""
-        class="popup__big-img">
+      <img class="popup__big-img">
       <p class="popup__img-desc"></p>
       <button type="button" class="popup__close"></button>
     </div>
