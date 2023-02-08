@@ -13,7 +13,7 @@ import {
   nameInput,
   jobInput,
   formList,
-  object
+  validationConfig 
 } from "../utils/constants.js";
 
 const user = new UserInfo({ profileName: '.profile__title', profileInfo: '.profile__subtitle' });
@@ -87,4 +87,4 @@ const enableValidation = (config) => {
   });
 };
 
-enableValidation(object);
+enableValidation(validationConfig);

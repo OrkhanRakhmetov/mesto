@@ -8,7 +8,7 @@ export const popupAddForm = document.forms["popupAddCard"];//ФОРМА
 export const popupImage = document.querySelector('#popupBigImg');
 export const formList = Array.from(document.querySelectorAll('.popup__inputs'));
 
-export const object = {
+export const validationConfig = {
   formSelector: '.popup__inputs',//селектор формы
   inputSelector: '.popup__input',//селектор инпутов внутри этой формы
   submitButtonSelector: '.popup__button',//селектор кнопки сабмита этой формы
