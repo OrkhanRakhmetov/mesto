@@ -16,7 +16,7 @@ import {
   validationConfig 
 } from "../utils/constants.js";
 
-const user = new UserInfo({ nameSelector: '.profile__title', jobSelector: '.profile__subtitle' });
+const userProfile = new UserInfo({ nameSelector: '.profile__title', jobSelector: '.profile__subtitle' });
 
 const popupWithImage = new PopupWithImage('#popupBigImg');
 popupWithImage.setEventListeners();
@@ -31,10 +31,7 @@ section.renderItems();
 
 const popupEdit = new PopupWithForm({
   handleSubmitForm: (inputValues) => {
-    user.setUserInfo({
-      name: inputValues.name,
-      job: inputValues.job,
-    });
+    userProfile.setUserInfo(inputValues);
     // popupEdit.close();
   }
 }, '#popupEditProfile');
@@ -42,8 +39,7 @@ popupEdit.setEventListeners();
 
 const popupAdd = new PopupWithForm({
   handleSubmitForm: (inputValues) => {
-    const cardElement = createCard(inputValues);
-    section.addItem(cardElement);
+   renderCard(inputValues);
     // popupAdd.close();
   }
 }, '#popupAddCard');
@@ -51,7 +47,7 @@ popupAdd.setEventListeners();
 
 popupEditOpenButtonElement.addEventListener('click', function () {
   popupEdit.open();
-  const userInfo = user.getUserInfo();
+  const userInfo = userProfile.getUserInfo();
   nameInput.value = userInfo.name;
   jobInput.value = userInfo.job;
   formValidators['popupEditProfile'].resetValidation();
