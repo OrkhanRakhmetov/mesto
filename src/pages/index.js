@@ -1,5 +1,5 @@
 // Импорты
-// import './index.css';
+import './index.css';
 import { elementsCards } from '../utils/cards.js';
 import { Card } from '../scripts/Card.js';
 import { FormValidator } from '../scripts/FormValidator.js';
