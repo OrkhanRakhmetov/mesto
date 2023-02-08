@@ -22,12 +22,12 @@
         <div class="profile__info">
           <div class="profile__info-name">
             <h1 class="profile__title">Жак-Ив Кусто</h1>
-            <button type="button" class="profile__edit-button"></button>
+            <button type="button" class="profile__edit-button" aria-label="Редактиовать данные"></button>
           </div>
           <p class="profile__subtitle">Исследователь океана</p>
         </div>
       </div>
-      <button type="button" class="profile__add-button"></button>
+      <button type="button" class="profile__add-button" aria-label="Добавить фото"></button>
     </section>
 
     <section class="elements">
@@ -42,8 +42,8 @@
           </button>
           <div class="element__desc">
             <h2 class="element__title"></h2>
-            <button type="button" class="element__heart"></button>
-            <button type="button" class="element__delete"></button>
+            <button type="button" class="element__heart" aria-label="Лайк"></button>
+            <button type="button" class="element__delete" aria-label="Удаление"></button>
           </div>
         </li>
 
@@ -67,9 +67,9 @@
         <input id="job-desc" name="job" type="text" class="popup__input popup__input_type_job"
           placeholder="Род деятельности" minlength="2" maxlength="200" required>
         <span class="popup__input-error" id="job-desc-error"></span>
-        <button id="popupEditSubmit" type="submit" class="popup__button popup__button_edit">Сохранить</button>
+        <button id="popupEditSubmit" type="submit" class="popup__button popup__button_edit" aria-label="Сохранить">Сохранить</button>
       </form>
-      <button type="button" class="popup__close"></button>
+      <button type="button" class="popup__close" aria-label="Закрыть попап"></button>
     </div>
   </section>
 
@@ -83,9 +83,9 @@
         <input id="link-img" name="link" type="url" class="popup__input popup__input_link_img"
           placeholder="Ссылка на картинку" required>
         <span class="popup__input-error" id="link-img-error"></span>
-        <button id="popupAddSubmit" type="submit" class="popup__button popup__button_add">Создать</button>
+        <button id="popupAddSubmit" type="submit" class="popup__button popup__button_add" aria-label="Создать карту"></button>>Создать</button>
       </form>
-      <button type="button" class="popup__close"></button>
+      <button type="button" class="popup__close" aria-label="Закрыть попап"></button>
     </div>
   </section>
 
@@ -93,7 +93,7 @@
     <div class="popup__enlarge-container">
       <img class="popup__big-img">
       <p class="popup__img-desc"></p>
-      <button type="button" class="popup__close"></button>
+      <button type="button" class="popup__close" aria-label="Закрыть попап"></button>
     </div>
   </section>
 
