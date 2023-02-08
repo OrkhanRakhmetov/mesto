@@ -6,7 +6,7 @@ export class Section {
     this._container = document.querySelector(containerSelector);
   }
 //Публичный метод, который отвечает за отрисовку всех элементов. Отрисовка каждого отдельного элемента должна осуществляться функцией renderer.
-  renderItems() {this._items.forEach( item => this._renderer(item))}
+  renderItems() {this._items.forEach(this._renderer)}
 
 //Публичный метод addItem, который принимает DOM-элемент и добавляет его в контейнер.
   addItem(element) {this._container.prepend(element)}

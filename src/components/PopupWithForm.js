@@ -12,13 +12,13 @@ export class PopupWithForm extends Popup {
 
   //Приватный метод _getInputValues, который собирает данные всех полей формы.
   _getInputValues() {
-    this._formValues = {};
+    const formValues = {};
 
     this._inputList.forEach(input => {
-      this._formValues[input.name] = input.value;
+      formValues[input.name] = input.value;
     });
 
-    return this._formValues;
+    return formValues;
   }
 
   //Метод setEventListeners класса PopupWithForm должен не только добавлять обработчик клика иконке закрытия, но и добавлять обработчик сабмита формы.
@@ -28,6 +28,8 @@ export class PopupWithForm extends Popup {
     this._form.addEventListener('submit', (e) => {
       e.preventDefault();
       this._handleSubmitForm(this._getInputValues());
+
+      this.close();
     })
 
   }

@@ -36,7 +36,7 @@ export class Card {
   }
 
   _handleDeleteCard() {
-    this._element.closest('.element').remove();
+    this._element.remove();
   }
 
   _handleLikeCard() {

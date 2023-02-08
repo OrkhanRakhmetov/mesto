@@ -1,6 +1,7 @@
 export class Popup {
   constructor(selector) {
     this._popup = document.querySelector(selector);
+    this._handleEscClose = this._handleEscClose.bind(this);
   }
 
   //Публичный метод open отвечает за открытие попапа.
@@ -23,12 +24,8 @@ export class Popup {
   //Публичный метод setEventListeners добавляет слушатель клика иконке закрытия попапа. Модальное окно также закрывается при клике на затемнённую область вокруг формы.
   setEventListeners() {
     this._popup.addEventListener('click', (e) => {
-      if (e.target.classList.contains('popup_active')) {
+      if (e.target.classList.contains('popup_active') || e.target.classList.contains('popup__close'))
         this.close();
-      }
-      if (e.target.classList.contains('popup__close')) {
-        this.close();
-      }
     })
   }
-} 
+}
