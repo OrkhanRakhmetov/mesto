@@ -17,6 +17,7 @@
 
 ## Ссылка на макет (Figma)
 <a href="https://www.figma.com/file/kRVLKwYG3d1HGLvh7JFWRT/JavaScript.-Sprint-6?node-id=0%3A1">Дизайн проект (Figma)</a>
+<a href="https://www.figma.com/file/PSdQFRHoxXJFs2FH8IXViF/JavaScript.-Sprint-9?node-id=0%3A1">Дизайн проект (Figma)(дополнине)</a>
 
 ## Автор
 Орхан Рахметов

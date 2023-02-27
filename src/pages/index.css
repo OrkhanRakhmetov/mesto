@@ -14,6 +14,7 @@
 /*Profile*/
 @import url(../blocks/profile/profile.css);
 @import url(../blocks/profile/__container/profile__container.css);
+@import url(../blocks/profile/__avatar/profile__avatar-button.css);
 @import url(../blocks/profile/__avatar/profile__avatar.css);
 @import url(../blocks/profile/__info/profile__info.css);
 @import url(../blocks/profile/__info-name/profile__info-name.css);
@@ -33,6 +34,7 @@
 @import url(../blocks/element/__heart/element__heart.css);
 @import url(../blocks/element/_heart-active/element_heart-active.css);
 @import url(../blocks/element/__delete/element__delete.css);
+@import url(../blocks/element/__delete/_hidden/element__delete_hidden.css);
 
 /*Footer*/
 @import url(../blocks/footer/footer.css);
@@ -41,6 +43,8 @@
 /*Popup*/
 @import url(../blocks/popup/popup.css);
 @import url(../blocks/popup/__container/popup__container.css);
+@import url(../blocks/popup/__container/popup__container_avatar.css);
+@import url(../blocks/popup/__container/popup__container_confirm.css);
 @import url(../blocks/popup/__title/popup__title.css);
 @import url(../blocks/popup/__inputs/popup__inputs.css);
 @import url(../blocks/popup/__inputs/_add-img/popup__inputs_add-img.css);
@@ -53,6 +57,7 @@
 @import url(../blocks/popup/__button/popup__button.css);
 @import url(../blocks/popup/__button/popup__button_add.css);
 @import url(../blocks/popup/__button/popup__button_disabled.css);
+@import url(../blocks/popup/__button/popup__button_confirm.css);
 @import url(../blocks/popup/__close/popup__close.css);
 @import url(../blocks/popup/__img-desc/popup__img-desc.css);
 @import url(../blocks/popup/_active/popup_active.css);

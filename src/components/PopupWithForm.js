@@ -3,11 +3,12 @@ import { Popup } from "./Popup.js";
 //Класс PopupWithForm, который наследует от Popup.
 //Кроме селектора попапа принимает в конструктор колбэк сабмита формы.
 export class PopupWithForm extends Popup {
-  constructor( { handleSubmitForm }, selector) {
+  constructor(handleSubmitForm, selector) {
     super(selector);
     this._handleSubmitForm = handleSubmitForm;
-    this._form = this._popup.querySelector('.popup__inputs')
+    this._form = this._popup.querySelector('.popup__inputs');
     this._inputList = this._popup.querySelectorAll('.popup__input');
+    this._button = this._popup.querySelector('.popup__button')
   }
 
   //Приватный метод _getInputValues, который собирает данные всех полей формы.
@@ -28,7 +29,6 @@ export class PopupWithForm extends Popup {
     this._form.addEventListener('submit', (e) => {
       e.preventDefault();
       this._handleSubmitForm(this._getInputValues());
-
       this.close();
     })
 
@@ -38,6 +38,7 @@ export class PopupWithForm extends Popup {
     super.close();
     this._form.reset();
   }
+
 }
 
 

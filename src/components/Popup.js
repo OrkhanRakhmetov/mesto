@@ -28,4 +28,8 @@ export class Popup {
         this.close();
     })
   }
+//Публичный метод setButtonText отвечает за изменение надписи на кнопке попапа.
+  setButtonText(text) {
+    this._button.textContent = text;
+  };
 }

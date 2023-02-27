@@ -42,21 +42,21 @@ export class FormValidator {
     })
   }
 
-  _disableSubmitButton() {
+  disableSubmitButton() {
     this._submitButton.classList.add(this._inactiveButtonClass);
     this._submitButton.setAttribute('disabled', true);
   }
 
-  _enableSubmitButton() {
+  enableSubmitButton() {
     this._submitButton.classList.remove(this._inactiveButtonClass);
     this._submitButton.removeAttribute('disabled');
   }
 
   _toggleButtonState() {
     if (this._hasInvalidInput()) {
-      this._disableSubmitButton();
+      this.disableSubmitButton();
     } else {
-      this._enableSubmitButton();
+      this.enableSubmitButton();
     }
   };
 
