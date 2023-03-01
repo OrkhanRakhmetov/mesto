@@ -25,23 +25,23 @@ export class Api {
     return fetch(
       this._baseUrl + '/cards/',
       { headers: this._headers }
-      )
+    )
       .then(res => this._getResponse(res))
   }
-  
-  editProfile({ name, link }) {
+
+  editProfile({ name, job }) {
     return fetch(this._baseUrl + '/users/me', {
       method: 'PATCH',
       headers: this._headers,
       body: JSON.stringify({
         name: name,
-        link: link
+        about: job
       })
     })
       .then(res => this._getResponse(res))
   }
 
-  changeAvatar({ avatar }) {
+  changeAvatar({avatar}) {
     return fetch(this._baseUrl + '/users/me/avatar/', {
       method: 'PATCH',
       headers: this._headers,
@@ -51,8 +51,6 @@ export class Api {
     })
       .then(res => this._getResponse(res))
   }
-
-
 
   addNewCard({ name, link }) {
     return fetch(this._baseUrl + '/cards/', {
@@ -66,24 +64,24 @@ export class Api {
       .then(res => this._getResponse(res))
   }
 
-  deleteCard(id) {
-    return fetch(this._baseUrl + '/cards/' + id, {
+  deleteCard(_id) {
+    return fetch(this._baseUrl + '/cards/' + _id, {
       method: 'DELETE',
       headers: this._headers
     })
       .then(res => this._getResponse(res))
   }
 
-  addLike(id) {
-    return fetch(this._baseUrl + '/cards/' + id + '/likes', {
+  addLike(_id) {
+    return fetch(this._baseUrl + '/cards/' + _id + '/likes', {
       method: 'PUT',
       headers: this._headers
     })
       .then(res => this._getResponse(res))
   }
 
-  deleteLike(id) {
-    return fetch(this._baseUrl + '/cards/' + id + '/likes', {
+  deleteLike(_id) {
+    return fetch(this._baseUrl + '/cards/' + _id + '/likes', {
       method: 'DELETE',
       headers: this._headers
     })

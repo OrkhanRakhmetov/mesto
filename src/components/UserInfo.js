@@ -13,18 +13,18 @@ export class UserInfo {
     }
   }
 
-  setUserInfo(userInfo) {
-    this._profileName.textContent = userInfo.name;
-    this._profileInfo.textContent = userInfo.about;
-    this._profileAvatar.src = userInfo.avatar;
-    this._profileId = userInfo.id;
+  getProfileId() {
+    return this._profileId;
   }
 
-  getProfileId() {
-      return this._profileId;
-    }
+  setUserInfo(user) {
+    this._profileName.textContent = user.name;
+    this._profileInfo.textContent = user.about;
+    this._profileAvatar.src = user.avatar;
+    this._profileId = user._id;
+  }
 
-    setUserAvatar() {
-      return this._profileAvatar.src;
-    }
+  setUserAvatar() {
+    return this._profileAvatar.src;
+  }
 }
