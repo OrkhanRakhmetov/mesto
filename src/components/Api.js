@@ -41,7 +41,7 @@ export class Api {
       .then(res => this._getResponse(res))
   }
 
-  changeAvatar({avatar}) {
+  changeAvatar(avatar) {
     return fetch(this._baseUrl + '/users/me/avatar/', {
       method: 'PATCH',
       headers: this._headers,

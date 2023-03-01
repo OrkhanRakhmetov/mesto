@@ -28,7 +28,6 @@ const api = new Api({
 
 Promise.all([api.getUserData(), api.getInitialCards()])
   .then(([userData, initialCards]) => {
-    console.log(userData);
     userProfile.setUserInfo(userData);
     section.renderCards(initialCards.reverse());
   })
@@ -148,9 +147,9 @@ const popupChangeAvatar = new PopupWithForm({
     popupChangeAvatar.setButtonText("Сохранение...");
     formValidators['popupAvatarForm'].disableSubmitButton();
     api
-      .changeAvatar(link)
+      .changeAvatar(link.link)
       .then((user) => {
-        userProfile.setUserInfo(user.avatar);
+        userProfile.setUserInfo(user);
         popupChangeAvatar.close();
       })
       .catch(err => console.log(err))
@@ -161,6 +160,11 @@ const popupChangeAvatar = new PopupWithForm({
   }
 }, '#popupNewAvatar');
 popupChangeAvatar.setEventListeners();
+
+popupAvatarOpenButtonElement.addEventListener('click', function () {
+  popupChangeAvatar.open();
+  formValidators['popupAvatarForm'].resetValidation();
+});
 
 popupEditOpenButtonElement.addEventListener('click', function () {
   popupEdit.open();
@@ -175,10 +179,7 @@ popupAddOpenButtonElement.addEventListener('click', function () {
   formValidators['popupAddCard'].resetValidation();
 });
 
-popupAvatarOpenButtonElement.addEventListener('click', function () {
-  popupChangeAvatar.open();
-  formValidators['popupAvatarForm'].resetValidation();
-});
+
 
 
 // Валидация
