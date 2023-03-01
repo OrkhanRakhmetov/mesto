@@ -24,7 +24,6 @@ export class Card {
     // вернём DOM-элемент карточки
     return cardElement;
   }
-
   _handleDeleteButton() {
     if (this._ownerId != this._userId) {
       this._deleteElement.classList.add('element__delete_hidden');
@@ -33,32 +32,29 @@ export class Card {
 
   handleDeleteClickButton() {
     this._element.remove();
-  };
+  }
 
-  _toggleLike = () => {
+  _clickLike = () => {
     if (this.isLikedByMe()) {
       this._likeElement.classList.add('element_heart-active')
-    } else {
-      this._likeElement.classList.remove('element_heart-active')
-    }
-  };
+    } 
+  }
 
   setLikesLength(likes) {
     this._likes = likes;
     this._numberOfLikes.textContent = this._likes.length;
-    this._toggleLike();
+    this._clickLike();
   }
 
   isLikedByMe() {
-    const isLiked = this._likes.some(like => like._id === this._userId);
-    return isLiked;
-  };
+    return this._likes.some(like => like._id === this._userId);
+  }
 
   _checkLikeButton() {
     if (this.isLikedByMe()) {
-      this._toggleLike();
+      this._clickLike();
     }
-  };
+  }
 
   generateCard() {
     this._element = this._getTemplate();
@@ -69,9 +65,7 @@ export class Card {
     this._numberOfLikes = this._element.querySelector('.element__number_of-likes');// надо сделать стили .element___number_of-likes
 
     this._handleDeleteButton();
-    
     this._checkLikeButton();
-    // this._handleDeleteButton();
     this._setEventListeners();
 
     this._imgElement.src = this._link;
@@ -81,9 +75,7 @@ export class Card {
     return this._element;
   }
 
-
   _setEventListeners() {
-
     this._deleteElement.addEventListener('click', () => {
       this._handleDeleteCard(this._id);
     });
@@ -95,6 +87,6 @@ export class Card {
     this._imgElement.addEventListener('click', () => {
       this._handleCardClick(this._link, this._name);
     });
-
   }
+
 }
