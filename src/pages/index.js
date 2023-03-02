@@ -42,7 +42,7 @@ const createCard = (dataCard) => {
   const card = new Card(dataCard, handleCardClick, '#element-template', userProfile.getProfileId(),
     {
       handleDeleteCard: (_id) => {
-        popupWithConfirmation.setButtonText("Удаление...")
+        // popupWithConfirmation.setButtonText("Удаление...")
         popupWithConfirmation.open();
         popupWithConfirmation.handleSubmitConfirm(() => {  
           api
@@ -52,9 +52,9 @@ const createCard = (dataCard) => {
               setTimeout(() => popupWithConfirmation.close(), 500);
             })
             .catch(err => console.log(err))
-            .finally(() => {
-              popupWithConfirmation.setButtonText("Да");
-            })
+            // .finally(() => {
+            //   popupWithConfirmation.setButtonText("Да");
+            // })
         })
       },
       handleLikeCard: (_id) => {
