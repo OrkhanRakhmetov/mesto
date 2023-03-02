@@ -49,7 +49,7 @@ const createCard = (dataCard) => {
             .deleteCard(_id)
             .then(() => {
               card.handleDeleteClickButton();
-              setTimeout(() => popupWithConfirmation.close(), 500);
+              setTimeout(() => popupWithConfirmation.close(), 100);
             })
             .catch(err => console.log(err))
             // .finally(() => {
@@ -98,7 +98,7 @@ const handleSubmitEditForm = inputValues => {
     .then((user) => {
       console.log(user);
       userProfile.setUserInfo(user);
-      setTimeout(() => popupEdit.close(), 500);
+      setTimeout(() => popupEdit.close(), 100);
     })
     .catch(err => console.log(err))
     .finally(() => {
@@ -119,7 +119,7 @@ const handleSubmitAddForm = (inputValues) => {
     })
     .then((card) => {
       renderCard(card);
-      setTimeout(() => popupAdd.close(), 500);
+      setTimeout(() => popupAdd.close(), 100);
 
     })
     .catch(err => console.log(err))
@@ -138,7 +138,7 @@ const handleSubmitAvatarForm = (link) => {
     .changeAvatar(link.link)
     .then((user) => {
       userProfile.setUserInfo(user);
-      setTimeout(() => popupChangeAvatar.close(), 500);
+      setTimeout(() => popupChangeAvatar.close(), 100);
     })
     .catch(err => console.log(err))
     .finally(() => {
