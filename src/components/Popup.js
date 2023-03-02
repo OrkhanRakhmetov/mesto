@@ -15,7 +15,7 @@ export class Popup {
     this._popup.classList.remove('popup_active');
     document.removeEventListener('keydown', this._handleEscClose);
   }
-  
+
   //Приватный метод _handleEscClose содержит логику закрытия попапа клавишей Esc.
   _handleEscClose(e) {
     if (e.key === 'Escape') {
@@ -30,9 +30,5 @@ export class Popup {
         this.close();
     })
   }
-
-//Публичный метод setButtonText отвечает за изменение надписи на кнопке попапа.
-  setButtonText(text) {
-    this._button.textContent = text;
-  }
+  
 }

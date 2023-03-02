@@ -42,15 +42,19 @@ const createCard = (dataCard) => {
   const card = new Card(dataCard, handleCardClick, '#element-template', userProfile.getProfileId(),
     {
       handleDeleteCard: (_id) => {
+        popupWithConfirmation.setButtonText("Удаление...")
         popupWithConfirmation.open();
-        popupWithConfirmation.handleSubmitConfirm(() => {
+        popupWithConfirmation.handleSubmitConfirm(() => {  
           api
             .deleteCard(_id)
             .then(() => {
               card.handleDeleteClickButton();
-              popupWithConfirmation.close();
+              setTimeout(() => popupWithConfirmation.close(), 500);
             })
-            .catch(err => console.log(err));
+            .catch(err => console.log(err))
+            .finally(() => {
+              popupWithConfirmation.setButtonText("Да");
+            })
         })
       },
       handleLikeCard: (_id) => {
@@ -94,12 +98,14 @@ const handleSubmitEditForm = inputValues => {
     .then((user) => {
       console.log(user);
       userProfile.setUserInfo(user);
-      popupEdit.close();
+      setTimeout(() => popupEdit.close(), 500);
     })
     .catch(err => console.log(err))
     .finally(() => {
-      formValidators['popupEditProfile'].enableSubmitButton();
-      popupAdd.setButtonText("Создать");
+      setTimeout(() => {
+        formValidators['popupEditProfile'].enableSubmitButton();
+        popupAdd.setButtonText("Сохранить");
+      }, 1000);
     })
 }
 
@@ -113,13 +119,16 @@ const handleSubmitAddForm = (inputValues) => {
     })
     .then((card) => {
       renderCard(card);
-      popupAdd.close();
+      setTimeout(() => popupAdd.close(), 500);
+
     })
     .catch(err => console.log(err))
     .finally(() => {
-      formValidators['popupAddCard'].enableSubmitButton();
-      popupAdd.setButtonText("Создать");
-    });
+      setTimeout(() => {
+        formValidators['popupAddCard'].enableSubmitButton();
+        popupAdd.setButtonText("Создать");
+      }, 1000);
+    })
 }
 
 const handleSubmitAvatarForm = (link) => {
@@ -129,13 +138,15 @@ const handleSubmitAvatarForm = (link) => {
     .changeAvatar(link.link)
     .then((user) => {
       userProfile.setUserInfo(user);
-      popupChangeAvatar.close();
+      setTimeout(() => popupChangeAvatar.close(), 500);
     })
     .catch(err => console.log(err))
     .finally(() => {
-      formValidators['popupAvatarForm'].enableSubmitButton();
-      popupChangeAvatar.setButtonText("Создать");
-    });
+      setTimeout(() => {
+        formValidators['popupAvatarForm'].enableSubmitButton();
+        popupChangeAvatar.setButtonText("Создать");
+      }, 1000);
+    })
 }
 
 const popupEdit = new PopupWithForm({ handleSubmitForm: handleSubmitEditForm }, '#popupEditProfile');

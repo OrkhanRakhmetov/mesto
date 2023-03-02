@@ -29,7 +29,7 @@ export class PopupWithForm extends Popup {
     this._form.addEventListener('submit', (e) => {
       e.preventDefault();
       this._handleSubmitForm(this._getInputValues());
-      this.close();
+      // this.close();
     })
 
   }
@@ -37,6 +37,11 @@ export class PopupWithForm extends Popup {
   close() {
     super.close();
     this._form.reset();
+  }
+
+  //Публичный метод setButtonText отвечает за изменение надписи на кнопке попапа.
+  setButtonText(text) {
+    this._button.textContent = text;
   }
 
 }

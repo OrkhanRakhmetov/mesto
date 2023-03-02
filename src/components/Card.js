@@ -37,7 +37,9 @@ export class Card {
   _clickLike = () => {
     if (this.isLikedByMe()) {
       this._likeElement.classList.add('element_heart-active')
-    } 
+    } else {
+      this._likeElement.classList.remove('element_heart-active')
+    }
   }
 
   setLikesLength(likes) {
